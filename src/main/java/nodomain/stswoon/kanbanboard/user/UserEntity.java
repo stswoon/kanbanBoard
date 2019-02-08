@@ -3,6 +3,7 @@ package nodomain.stswoon.kanbanboard.user;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
@@ -17,11 +18,13 @@ public class UserEntity implements Identifiable<UUID> {
     @Id
     @Column(unique = true, nullable = false)
     @GeneratedValue
+    @Type(type="uuid-char")
     private UUID id;
 
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
+    @Type(type="uuid-char")
     private UUID boardId;
 }

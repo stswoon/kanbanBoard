@@ -33,7 +33,7 @@ public class TestData {
 
     @PostConstruct
     public void initTestData() {
-        final UUID boardId = boardRepository.save(new BoardEntity()).getId();
+        final UUID boardId = boardRepository.save(new BoardEntity(UUID.fromString("296809e8-8cfc-4c13-9d39-dd1a25fb791e"))).getId();
 
 
         userRepository.save(new UserEntity(null, "alex@test.com", boardId));

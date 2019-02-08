@@ -1,0 +1,6 @@
+# https://www.jetbrains.com/help/idea/exploring-http-syntax.html
+
+### get test data
+http://localhost:8080/user/getBoard/alex@test.com
+
+###

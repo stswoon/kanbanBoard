@@ -34,7 +34,7 @@ public class BoardController {
         List<TicketDto> ticketDtos = StreamSupport.stream(ticketEntities.spliterator(), false)
                 .map(ticketEntity -> new TicketDto(ticketEntity.getId(), ticketEntity.getName(), ticketEntity.getDescription(), ticketEntity.getDueDate(), ticketEntity.getStatus()))
                 .collect(Collectors.toList());
-        return new BoardDto(ticketDtos);
+        return new BoardDto(boardId, ticketDtos);
     }
 
     @RequestMapping(value = "/{boardId}", method = PUT)

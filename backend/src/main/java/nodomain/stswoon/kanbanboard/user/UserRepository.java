@@ -5,7 +5,7 @@ import org.springframework.lang.Nullable;
 
 import java.util.UUID;
 
-public interface UserRepository extends CrudRepository<UserEntity, UUID> {
+interface UserRepository extends CrudRepository<UserEntity, UUID> {
     @Nullable
     UserEntity findByEmail(String email);
 }

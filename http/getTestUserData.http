@@ -1,6 +1,10 @@
 # https://www.jetbrains.com/help/idea/exploring-http-syntax.html
 
 ### get test data
-http://localhost:8080/user/getBoard/alex@test.com
+http://localhost:8080/user/getUserAndBoard/alex@test.com
+
+### get with etag
+http://localhost:8080/user/getUserAndBoard/alex@test.com
+If-None-Match: "024185c1bdef6cd3a9c0835cb5d2556f9"
 
 ###

@@ -23,8 +23,4 @@ public class UserEntity implements Identifiable<UUID> {
 
     @Column(nullable = false)
     private String email;
-
-    @Column(nullable = false)
-    @Type(type="uuid-char")
-    private UUID boardId;
 }

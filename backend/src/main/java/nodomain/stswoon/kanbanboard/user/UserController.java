@@ -1,9 +1,10 @@
 package nodomain.stswoon.kanbanboard.user;
 
 import lombok.extern.slf4j.Slf4j;
+import nodomain.stswoon.kanbanboard.board.BoardEntity;
 import nodomain.stswoon.kanbanboard.ticket.TicketDto;
 import nodomain.stswoon.kanbanboard.ticket.TicketEntity;
-import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/user") //todo rename to user entity
+@RequestMapping("/user")
 class UserController {
     private final UserService userService;
 
@@ -26,13 +27,14 @@ class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/getBoard/{email}", method = GET)
+    @RequestMapping(value = "/getUserAndBoard/{email}", method = GET)
     public UserDto get(@PathVariable String email) {
         log.info("Get user tickets by email '{0}'", email);
-        Pair<UserEntity, List<TicketEntity>> userTickets = userService.getUserTickets(email);
-        UserEntity userEntity = userTickets.getKey();
-        List<TicketDto> ticketDtos = userTickets.getValue().stream().map(TicketDto::valueOf).collect(Collectors.toList());
-        UserDto userDto = new UserDto(userEntity.getId(), userEntity.getBoardId(), ticketDtos);
+        Triple<UserEntity, BoardEntity, List<TicketEntity>> userTickets = userService.getUserAndBoard(email);
+        UserEntity userEntity = userTickets.getLeft();
+        BoardEntity boardEntity = userTickets.getMiddle();
+        List<TicketDto> ticketDtos = userTickets.getRight().stream().map(TicketDto::valueOf).collect(Collectors.toList());
+        UserDto userDto = new UserDto(userEntity.getId(), boardEntity.getId(), ticketDtos);
         return userDto;
     }
 

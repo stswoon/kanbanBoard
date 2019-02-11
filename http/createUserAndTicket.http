@@ -1,5 +1,5 @@
 ### create new user and board
-http://localhost:8080/user/getBoard/new_v1@test.com
+http://localhost:8080/user/getUserAndBoard/new_v1@test.com
 
 > {%
     client.log("qwe");
@@ -13,6 +13,6 @@ Content-Type: application/json;charset=UTF-8
 { "id": "7584407d-739f-43fa-98f5-3fdcb2322670", "boardId": "{{new_v1_boardId}}", "name": "Test ticket" }
 
 ### Get tickets
-http://localhost:8080/user/getBoard/new_v1@test.com
+http://localhost:8080/user/getUserAndBoard/new_v1@test.com
 
 ###

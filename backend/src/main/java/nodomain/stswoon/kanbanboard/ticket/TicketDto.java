@@ -12,6 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class TicketDto {
     private UUID id;
+    private UUID boardId;
     private String name;
     private String description;
     private Date dueDate;
@@ -19,12 +20,12 @@ public class TicketDto {
 
     //compromise
     public static TicketDto valueOf(TicketEntity entity) {
-        return new TicketDto(entity.getId(), entity.getName(), entity.getDescription(), entity.getDueDate(), entity.getStatus());
+        return new TicketDto(entity.getId(), entity.getBoardId(), entity.getName(), entity.getDescription(), entity.getDueDate(), entity.getStatus());
     }
 
     //compromise
     public static TicketEntity toEntity(TicketDto dto) {
-        return new TicketEntity(dto.getId(), null, dto.getName(), dto.getDescription(), dto.getDueDate(), dto.getStatus());
+        return new TicketEntity(dto.getId(), dto.getBoardId(), dto.getName(), dto.getDescription(), dto.getDueDate(), dto.getStatus());
     }
 
 }

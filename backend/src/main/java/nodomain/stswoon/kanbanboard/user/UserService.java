@@ -5,6 +5,7 @@ import nodomain.stswoon.kanbanboard.board.BoardEntity;
 import nodomain.stswoon.kanbanboard.board.BoardService;
 import nodomain.stswoon.kanbanboard.ticket.TicketEntity;
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
@@ -30,29 +31,32 @@ public class UserService {
     }
 
     /**
-     * Get or create user with empty board
-     * @param userEmail
+     * Get user and tickets or create user with empty board
      * @return return user data and tickets
      */
-    @Transactional  //todo??
-    public @NonNull Pair<UserEntity, List<TicketEntity>> getUserTickets(@NonNull String userEmail) {
+    @Transactional  //todo check
+    public @NonNull Triple<UserEntity, BoardEntity, List<TicketEntity>> getUserAndBoard(@NonNull String userEmail) {
         UserEntity userEntity = userRepository.findByEmail(userEmail);
+        BoardEntity boardEntity = null;
         if (userEntity == null) {
             log.info("Creating new user with email='{0}'", userEmail);
-            BoardEntity boardEntity = new BoardEntity();
-            boardEntity = boardService.save(boardEntity);
-            userEntity = new UserEntity(null, userEmail, boardEntity.getId());
+            userEntity = new UserEntity(null, userEmail);
             userEntity = userRepository.save(userEntity);
-            log.info("New user was created (email='{0}', id='{1}')", userEntity.getEmail(), userEntity.getId());
+            boardEntity = new BoardEntity(null, userEntity.getId());
+            boardEntity = boardService.save(boardEntity);
+            log.info("New user was created (email='{0}', id='{1}', boardId='{2}')", userEntity.getEmail(), userEntity.getId(), boardEntity.getId());
+        } else {
+            log.info("Use existing user with email='{0}', id='{1}'", userEmail, userEntity.getId());
+            boardEntity = boardService.getBoardByUser(userEntity.getId());
         }
-        List<TicketEntity> ticketEntities = boardService.getTickets(userEntity.getBoardId());
-        return Pair.of(userEntity, ticketEntities);
+        List<TicketEntity> ticketEntities = boardService.getTickets(boardEntity.getId());
+        return Triple.of(userEntity, boardEntity, ticketEntities);
     }
 
-    @Transactional  //todo??
+    @Transactional
     public void delete(@NonNull UUID userId) {
         UserEntity userEntity = userRepository.findById(userId).get();
-        boardService.delete(userEntity.getBoardId());
+        boardService.deleteByUser(userEntity.getId());
         userRepository.deleteById(userId);
     }
 }

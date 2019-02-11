@@ -1,8 +1,22 @@
 spring.profiles.active: local
 
 ---
-spring.profiles: local
+spring.profiles: common
 
-spring.datasource.url: jdbc:sqlite:./db/localDb.db
 spring.jpa.properties.hibernate.dialect: com.enigmabridge.hibernate.dialect.SQLiteDialect
 spring.jpa.hibernate.ddl-auto: create-drop
+
+
+---
+spring.profiles: local
+spring.profiles.include:
+- common
+
+spring.datasource.url: jdbc:sqlite:./db/localDb.db
+
+---
+spring.profiles: test
+spring.profiles.include:
+- common
+
+spring.datasource.url: jdbc:sqlite:./target/localDb.db

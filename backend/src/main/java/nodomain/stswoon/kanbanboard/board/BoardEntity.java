@@ -20,4 +20,9 @@ public class BoardEntity implements Identifiable<UUID> {
     @GeneratedValue
     @Type(type="uuid-char")
     private UUID id;
+
+    @Column(nullable = false)
+    @GeneratedValue
+    @Type(type="uuid-char")
+    private UUID userId;
 }

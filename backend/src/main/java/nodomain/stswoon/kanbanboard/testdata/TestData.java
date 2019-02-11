@@ -33,11 +33,9 @@ public class TestData {
 
     @PostConstruct
     public void initTestData() {
-        final UUID boardId = boardService.save(new BoardEntity(UUID.fromString("296809e8-8cfc-4c13-9d39-dd1a25fb791e"))).getId();
+        final UUID userIdId = userService.save(new UserEntity(null, "alex@test.com")).getId();
 
-
-        userService.save(new UserEntity(null, "alex@test.com", boardId));
-
+        final UUID boardId = boardService.save(new BoardEntity(UUID.fromString("296809e8-8cfc-4c13-9d39-dd1a25fb791e"), userIdId)).getId();
 
         ticketService.save(new TicketEntity(null, boardId, "Requirements", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 createDate(7, 2, 2019), TicketStatus.DONE));

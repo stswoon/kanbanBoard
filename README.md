@@ -12,6 +12,7 @@
 1. Offline work **out-of-scope**
 1. *Tests
 1. Mobile html **out-of-scope**
+1. Ordering **out-of-scope** (because no in github)
 
 Techincal moments:
 
@@ -27,3 +28,14 @@ Techincal moments:
 1. Deploing to heroku
 1. *CI **out-of-scope**
 1. SSR **out-of-scope**
+
+
+
+Вопросы:
+аджайл
+совместительство 
+лиды уже есть на проекте
+подробнее о проекте
+кто бек пишет
+размер команды
+процесс qa, ba, дизайнеры. кто говорит с заказчиком

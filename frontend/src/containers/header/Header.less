@@ -1,0 +1,30 @@
+.bob-header {
+  padding-top: 2px;
+  background-color: #cfd3ce;
+  border-bottom: 5px solid #000000;
+
+  &__module-select {
+    min-width: 160px;
+  }
+
+  &__title {
+    display: inline-block;
+    padding-right: 20px;
+
+    &_name {
+      display: inline-block;
+      padding-right: 5px;
+    }
+  }
+
+  &__controls {
+    display: inline-block;
+
+    &_open-project-dialog {
+      display: none !important; //todo remove !important after remove bootstrap
+    }
+    &_auto-calc {
+      margin: 0 5px;
+    }
+  }
+}

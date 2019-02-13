@@ -3,7 +3,10 @@ package nodomain.stswoon.kanbanboard.ticket;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
+import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.UUID;
 
@@ -11,11 +14,17 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TicketDto {
+    @NonNull
     private UUID id;
+    @Nullable
     private UUID boardId;
+    @Nullable
     private String name;
+    @Nullable
     private String description;
+    @Nullable
     private Date dueDate;
+    @NonNull
     private TicketStatus status;
 
     //compromise

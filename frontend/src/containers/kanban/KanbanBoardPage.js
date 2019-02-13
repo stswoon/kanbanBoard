@@ -60,12 +60,15 @@ const tickets = [
     {
         "id": "f4414012-54a9-4260-abd9-81b7ba42880e",
         "name": "Demo",
+        "status": "BACKLOG"
     },
     {
         "id": "0dcda4c1-2cad-4741-bcb9-465a1af64d64",
         "name": "Code review + fix todos",
+        "status": "BACKLOG"
     },
     {
         "id": "2369cd90-a644-43f6-89c5-de262e35798d",
+        "status": "BACKLOG"
     }
 ];

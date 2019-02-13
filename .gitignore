@@ -4,7 +4,6 @@
 /backend/target
 /backend/src/main/resources/static/main.css
 /backend/src/main/resources/static/main.js
-/backend/src/main/resources/templates/index.html
 
 !.mvn/wrapper/maven-wrapper.jar
 

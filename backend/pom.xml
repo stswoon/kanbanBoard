@@ -88,18 +88,18 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/src/main/resources</outputDirectory>
+                            <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/../frontend/build</directory>
+                                    <directory>${basedir}/../frontend/build/static/css</directory>
                                     <includes>
-                                        <include>static/css/main.css</include>
+                                        <include>main.css</include>
                                     </includes>
                                 </resource>
                                 <resource>
-                                    <directory>${basedir}/../frontend/build</directory>
+                                    <directory>${basedir}/../frontend/build/static/js</directory>
                                     <includes>
-                                        <include>static/js/main.js</include>
+                                        <include>main.js</include>
                                     </includes>
                                 </resource>
                                 <!--

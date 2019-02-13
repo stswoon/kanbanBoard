@@ -1,35 +1,22 @@
 // @flow
 
 import React, {Component} from "react";
-import {Button} from "antd";
 import "./Board.less";
-import {Ticket} from "../ticket/Ticket";
+import {BoardColumn} from "./BoardColumn";
+import {strings} from "../../services/strings";
 
-const columnTypes = ["BACKLOG", "IN_PROGRESS", "DONE"];
+const columnTypes: TicketStatus[] = ["BACKLOG", "IN_PROGRESS", "DONE"];
 
+//todo https://www.npmjs.com/package/react-dnd
 export class Board extends Component {
     render() {
-        //todo: for optimization in future may be created BoardColumn component
-        const columns = columnTypes.map(columnType => {
-            const tickets = this.props.tickets
-                .filter((ticket: TicketType) => ticket.status === columnType)
-                .map((ticket: TicketType) => <Ticket {...ticket}/>);
+        const columns = columnTypes.map((columnType: TicketStatus) => {
+            const tickets = this.props.tickets.filter((ticket: TicketType) => ticket.status === columnType);
             return (
-                <div className={"board-column" + " _" + columnType.toLocaleLowerCase()}>
-                    <div className="board-column__title">columnType.toLocaleLowerCase()</div>
-                    <div className="board-column__tickets">{tickets}</div>
-                </div>
+                <BoardColumn key={columnType} columnType={columnType} name={strings.board.columnTypes[columnType]}
+                             tickets={tickets}/>
             );
         });
-
         return (<div className="board">{columns}</div>);
     }
 }
-
-type TicketType = {
-    id: string;
-    name?: string;
-    description?: string;
-    dueDate?: string;
-    status: "BACKLOG" | "IN_PROGRESS" | "DONE"; //todo make status backlog if null
-};

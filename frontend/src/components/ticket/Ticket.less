@@ -1,10 +1,50 @@
-.board {
-  display: flex;
-  &__column {
-    width: 33%;
+@backgroundColor: rgba(222, 192, 64, 1);
+@backgroundHeaderColor: rgb(184, 164, 54);
 
-    &__title {
-      font-size: 30px;
+.ticket {
+  padding: 0 5px 5px 5px;
+  margin-bottom: 10px;
+  border: 5px solid rgb(222, 192, 64);
+  border-top: 5px solid rgb(184, 164, 54);
+  background-color: @backgroundColor;
+
+  &:hover {
+    border-color: #c15911;
+    transition: border-color 0.3s linear;
+  }
+
+  &__header {
+    height: 30px;
+    cursor: pointer;
+    background-color: @backgroundHeaderColor;
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__name &__input {
+    font-weight: 700;
+  }
+
+  &__dueDate {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input-name {
+    white-space: nowrap;
+    background-color: @backgroundColor;
+    padding-left: 10px;
+  }
+
+  &__input {
+    background-color: @backgroundColor;
+    border-color: @backgroundColor;
+
+    &.ant-calendar-picker {
+      width: 100%;
+      & .ant-calendar-picker-input, & .ant-calendar-picker-clear {
+        background-color: @backgroundColor;
+        border-color: @backgroundColor;
+      }
     }
   }
 }

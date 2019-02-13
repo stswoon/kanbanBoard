@@ -91,23 +91,25 @@
                             <outputDirectory>${basedir}/src/main/resources</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/../frontend/build/static/css</directory>
+                                    <directory>${basedir}/../frontend/build</directory>
                                     <includes>
-                                        <include>static/main.css</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>${basedir}/../frontend/build/static/js</directory>
-                                    <includes>
-                                        <include>static/main.js</include>
+                                        <include>static/css/main.css</include>
                                     </includes>
                                 </resource>
                                 <resource>
                                     <directory>${basedir}/../frontend/build</directory>
                                     <includes>
-                                        <include>templates/index.html</include>
+                                        <include>static/js/main.js</include>
                                     </includes>
                                 </resource>
+                                <!--
+                                <resource>
+                                    <directory>${basedir}/../frontend/build</directory>
+                                    <includes>
+                                        <include>index.html</include>
+                                    </includes>
+                                </resource>
+                                -->
                             </resources>
                         </configuration>
                     </execution>

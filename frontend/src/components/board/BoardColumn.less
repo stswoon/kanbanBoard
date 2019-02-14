@@ -1,12 +1,16 @@
 .board-column {
   width: 32%;
+  min-width: 220px;
+  margin: 0 1%;
 
   &__title {
     font-size: 30px;
+    text-align: center;
   }
 
   &__tickets {
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 100px); //in case of no tickets
   }
 }

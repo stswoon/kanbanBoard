@@ -5,8 +5,10 @@ import {DatePicker, Input} from "antd";
 import "./Ticket.less";
 import moment from "moment";
 import {strings} from "../../services/strings";
+import type {TicketType} from "../board/BoardTypes";
 
 const {TextArea} = Input;
+
 
 export class Ticket extends Component<Props> {
     //http://beta.ant.design/components/date-picker/

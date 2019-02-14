@@ -1,6 +1,6 @@
-type TicketStatus = "BACKLOG" | "IN_PROGRESS" | "DONE"; //todo make status backlog if null
+export type TicketStatus = "BACKLOG" | "IN_PROGRESS" | "DONE"; //todo make status backlog if null
 
-type TicketType = {
+export type TicketType = {
     id: string; //uuid
     name?: string;
     description?: string;

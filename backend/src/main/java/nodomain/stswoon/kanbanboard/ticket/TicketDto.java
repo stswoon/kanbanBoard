@@ -26,15 +26,22 @@ public class TicketDto {
     private Date dueDate;
     @NonNull
     private TicketStatus status;
+    @NonNull
+    private int order;
 
     //compromise
     public static TicketDto valueOf(TicketEntity entity) {
-        return new TicketDto(entity.getId(), entity.getBoardId(), entity.getName(), entity.getDescription(), entity.getDueDate(), entity.getStatus());
+        return new TicketDto(
+                entity.getId(), entity.getBoardId(), entity.getName(), entity.getDescription(),
+                entity.getDueDate(), entity.getStatus(), entity.getOrder());
     }
 
     //compromise
     public static TicketEntity toEntity(TicketDto dto) {
-        return new TicketEntity(dto.getId(), dto.getBoardId(), dto.getName(), dto.getDescription(), dto.getDueDate(), dto.getStatus());
+        return new TicketEntity(
+                dto.getId(), dto.getBoardId(), dto.getName(), dto.getDescription(),
+                dto.getDueDate(), dto.getStatus(), dto.getOrder()
+        );
     }
 
 }

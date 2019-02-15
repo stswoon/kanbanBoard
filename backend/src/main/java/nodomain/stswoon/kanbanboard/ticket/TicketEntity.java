@@ -32,5 +32,6 @@ public class TicketEntity implements Identifiable<UUID> {
     private Date dueDate;
     @Column
     private TicketStatus status;
-    //todo order
+    @Column
+    private int order;
 }

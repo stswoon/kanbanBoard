@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App, {containerKeys} from "./App";
-import {Provider} from "react-redux"
-import {bobbyStore} from "./AppStore";
+import App from "./App";
 
-const renderApp = (App) => {
-    let el = document.getElementById("app");
-    ReactDOM.render(<Provider store={bobbyStore}><App/></Provider>, el);
+const renderApp = (Application) => {
+    const el = document.getElementById("app");
+    ReactDOM.render(<Application/>, el);
 };
 
 if (module.hot) {

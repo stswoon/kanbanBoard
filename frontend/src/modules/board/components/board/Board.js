@@ -3,7 +3,7 @@
 import React, {Component} from "react";
 import "./Board.less";
 import {BoardColumn} from "./BoardColumn";
-import {strings} from "../../services/strings";
+import {strings} from "../../../shared/services/strings";
 import {DragDropContext} from "react-beautiful-dnd";
 import type {TicketStatus, TicketType} from "./BoardTypes";
 

@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {createLogger} from "redux-logger";
 import thunkMiddleware from "redux-thunk";
-import {bobOilTableReducer} from "./containers/kanban/KanbanBoardRedux";
+import {bobOilTableReducer} from "./modules/board/KanbanBoardRedux";
 
 const loggerMiddleware = createLogger();
 

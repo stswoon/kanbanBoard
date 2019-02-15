@@ -4,7 +4,7 @@ import React, {Component} from "react";
 import {DatePicker, Input} from "antd";
 import "./Ticket.less";
 import moment from "moment";
-import {strings} from "../../services/strings";
+import {strings} from "../../../shared/services/strings";
 import type {TicketType} from "../board/BoardTypes";
 
 const {TextArea} = Input;

@@ -7,11 +7,14 @@ const renderApp = (Application) => {
     ReactDOM.render(<Application/>, el);
 };
 
-if (module.hot) {
-    module.hot.accept("./App", () => {
-        const NextApp = require("./App").default;
-        renderApp(NextApp);
-    });
+if (process.env.NODE_ENV !== "production") {
+    if (module.hot) {
+        module.hot.accept("./App", () => {
+            const NextApp = require("./App").default;
+            renderApp(NextApp);
+        });
+    }
 }
+
 renderApp(App);
 

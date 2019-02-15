@@ -15,5 +15,12 @@ export const strings = {
     },
     ticket: {
         dueDate: "Due date:"
+    },
+    login: {
+        submitButton: "Login",
+        email: {
+            required: "Please, enter your e-mail",
+            notValid: "Not valid e-mail"
+        }
     }
 };

@@ -1,10 +1,10 @@
 //@flow
 
 import React, {Component} from "react";
-import {strings} from "../../services/strings";
+import {strings} from "../shared/services/strings";
 import {Header} from "../header/Header";
-import {Board} from "../../components/board/Board";
-import type {TicketType} from "../../components/board/BoardTypes";
+import {Board} from "./components/board/Board";
+import type {TicketType} from "./components/board/BoardTypes";
 
 
 export class KanbanBoardPage extends Component {

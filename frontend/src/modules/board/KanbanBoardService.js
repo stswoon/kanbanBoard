@@ -1,4 +1,4 @@
-import {HttpService} from "../../services/http";
+import {HttpService} from "../shared/services/http";
 
 //todo rename
 export const KanbanBoardService = {

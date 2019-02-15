@@ -3,7 +3,7 @@
 import React, {Component} from "react";
 import "./Header.less";
 import {Button} from "antd";
-import {strings} from "../../services/strings";
+import {strings} from "../shared/services/strings";
 
 export class Header extends Component<Props, State> {
    render() {

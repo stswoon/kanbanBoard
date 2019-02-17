@@ -55,8 +55,8 @@ function loadBoard(userEmail) {
         dispatch(loading(true));
         try {
             let response = await BoardService.loadBoard(userEmail);
-            dispatch(storeBoardId(response.boardId));
-            dispatch(storeTickets(response.tickets));
+            dispatch(storeBoardId(response.data.boardId));
+            dispatch(storeTickets(response.data.ticketDtos));
         } catch (cause) {
             console.error(`Failed to get tickets for ${userEmail}`, cause);
             message.error(strings.systemErrorContactAdmin);

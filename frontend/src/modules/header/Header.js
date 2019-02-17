@@ -7,9 +7,15 @@ import {strings} from "../shared/services/strings";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {loginActions} from "../login/LoginFormRedux";
+import {Redirect} from "react-router-dom";
 
 class Header extends Component<Props, State> {
     render() {
+        if (!this.props.userEmail) {
+            return (<Redirect to={"/login"}/>);
+        }
+
+
         const title = (
             <div className="header__title">
                 <h3 className="header__title_name">{strings.header.title}</h3>

@@ -19,7 +19,7 @@ public class WebResourceConfiguration implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         //todo only for local
         registry.addMapping("/static/**").allowedOrigins("*");
-        registry.addMapping("/api/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("*").allowCredentials(true);
+        registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("*").allowCredentials(true);
     }
 
     @Override

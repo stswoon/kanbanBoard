@@ -3,7 +3,7 @@ export const actionTypes = {
     LOGOUT: "LOGOUT"
 };
 
-const defaultSate = {userEmail: null};
+const defaultSate = {userEmail: localStorage.getItem("userEmail")};
 
 export const loginReducer = (state = defaultSate, action) => {
     switch (action.type) {

@@ -58,11 +58,21 @@ const updateTickets = (tickets: TicketType[], newTickets: TicketType[]) => {
 class Board extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.userEmail !== prevProps.userEmail) {
-            this.actions.loadBoard(this.props.userEmail);
+            this.props.actions.loadBoard(this.props.userEmail);
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.userEmail) {
+            this.props.actions.loadBoard(this.props.userEmail);
         }
     }
 
     render() {
+        if (!this.props.userEmail) {
+            return null;
+        }
+
         const columns = columnTypes.map((columnType: TicketStatus) => {
             const columnTickets = getSortedTicketsByColumnType(this.props.tickets, columnType);
             const createFlag = columnType === "BACKLOG";

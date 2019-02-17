@@ -36,7 +36,7 @@ public class TicketControllerTest {
     @Test
     public void createOperation() throws Exception {
         String ticketName = "test_709a9cc1-8433-466f-91bd-417aadb2c84e";
-        TicketDto dto = new TicketDto(null, UUID.fromString("296809e8-8cfc-4c13-9d39-dd1a25fb791e"), ticketName, null, null, null);
+        TicketDto dto = new TicketDto(null, UUID.fromString("296809e8-8cfc-4c13-9d39-dd1a25fb791e"), ticketName, null, null, null, 0);
         String requestBody = saveRequestJsonString(dto);
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders

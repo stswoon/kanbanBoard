@@ -22,24 +22,5 @@ export const utils = {
             });
             return str;
         }
-    },
-    convert: {
-        toPercentage: (data) => {
-            return data < 1 ? data * 100 : data;
-        },
-        applyDefaults: (defaults) => {
-            return (elem) => {
-                let elemWithDefaults = {...elem};
-                for (let key in defaults) {
-                    if (defaults.hasOwnProperty(key)) {
-                        let value = elem[key];
-                        if (value == null || value === "") {
-                            elemWithDefaults[key] = defaults[key];
-                        }
-                    }
-                }
-                return elemWithDefaults;
-            }
-        }
     }
 };

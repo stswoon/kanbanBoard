@@ -4,6 +4,10 @@ import React, {Component} from "react";
 import {Button, Form, Input} from "antd";
 import {strings} from "../shared/services/strings";
 import "./LoginForm.less";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {loginActions} from "./LoginFormRedux";
+import {Redirect} from "react-router-dom";
 
 //simple email validation, if need more see https://stackoverflow.com/a/1373724
 const isEmailValid = (email: string): boolean => {
@@ -11,7 +15,7 @@ const isEmailValid = (email: string): boolean => {
     return re.test(email);
 };
 
-export class LoginForm extends Component {
+class LoginForm extends Component {
     state = {
         formSubmited: false,
         email: {
@@ -20,9 +24,19 @@ export class LoginForm extends Component {
         }
     };
 
+    componentWillMount() {
+        this.props.actions.logout();
+    }
+
     render() {
+        if (this.props.authenticated) {
+            return (<Redirect to={"/"}/>);
+        }
         return (
             <Form className="login-form" onSubmit={this.handleSubmit}>
+                <Form.Item className="login-form__field">
+                    <span>Try 'alex@test.com' for demo</span>
+                </Form.Item>
                 <Form.Item key="email" className="login-form__field" {...this.validateEmailInput()} >
                     <Input
                         addonBefore="Email:"
@@ -36,7 +50,7 @@ export class LoginForm extends Component {
                 <Form.Item key="controls" className="login-form__field">
                     <Button className="login-form__submit-button"
                             type="primary" htmlType="submit"
-                            onClick={this.login}
+                            onClick={this.handleSubmit}
                     >{strings.login.submitButton}</Button>
                 </Form.Item>
             </Form>
@@ -49,7 +63,7 @@ export class LoginForm extends Component {
         this.setState({[name]: {touched: true, value}});
     };
 
-    validateEmailInput = () => {
+    validateEmailInput = (): any | null => {
         const email = this.state.email.value;
         const empty = email == null || email === "";
         const showRequired = (this.state.formSubmited || this.state.email.touched) && empty;
@@ -69,8 +83,20 @@ export class LoginForm extends Component {
         this.setState({formSubmited: true}, () => {
             let fromValid = this.validateEmailInput() == null;
             if (fromValid) {
-                localStorage.setItem("login", "true");
+                this.props.actions.login(this.state.email.value);
             }
         });
     }
 }
+
+function mapStateToProps(state) {
+    const {loginReducer} = state;
+    return {authenticated: !!loginReducer.userEmail};
+}
+
+function mapDispatchToProps(dispatch) {
+    return {actions: bindActionCreators(loginActions, dispatch)};
+}
+
+const connected = connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export {connected as LoginForm};

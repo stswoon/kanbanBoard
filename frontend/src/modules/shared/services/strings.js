@@ -1,8 +1,9 @@
 export const strings = {
-    systemErrorContactAdmin: "Системная ошибка, пожалуйста обратитесь к администратору",
-    ok: "ОК",
-    cancel: "Отмена",
+    systemErrorContactAdmin: "System error, please contact support",
     header: {
+        title: "Kanban Board",
+        version: "v0.0.1",
+        loader: "Synchronization",
         logout: "Logout",
         goToGitHub: "GitHub"
     },
@@ -14,6 +15,7 @@ export const strings = {
         }
     },
     ticket: {
+        noname: "[No name]",
         dueDate: "Due date:"
     },
     login: {

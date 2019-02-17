@@ -3,8 +3,9 @@
 import React, {Component} from "react";
 import "./BoardColumn.less";
 import {Ticket} from "../ticket/Ticket";
-import type {TicketType} from "./BoardTypes";
+import type {TicketType} from "../../BoardModels";
 import {Draggable, Droppable} from "react-beautiful-dnd";
+import {Button} from "antd";
 
 
 //DnD: https://codesandbox.io/s/ql08j35j3q, also see part in Board
@@ -15,7 +16,7 @@ export class BoardColumn extends Component {
                 <Draggable key={ticket.id} draggableId={ticket.id} index={index}>
                     {(provided) => (
                         <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                            <Ticket {...ticket}/>
+                            <Ticket {...ticket} onRemove={this.handleRemove} onChange={this.handleTicketChange}/>
                         </div>
                     )}
                 </Draggable>
@@ -24,6 +25,7 @@ export class BoardColumn extends Component {
         return (
             <div className={"board-column" + " " + "_" + this.props.columnType.toLocaleLowerCase()}>
                 <h4 className="board-column__title">{this.props.name}</h4>
+                {this.props.createFlag && <Button type="primary" icon="plus" onClick={this.handleCreateTicket}/>}
                 <Droppable droppableId={"droppable_" + this.props.columnType}>
                     {(provided) => {
                         return (
@@ -36,4 +38,16 @@ export class BoardColumn extends Component {
             </div>
         );
     }
+
+    handleCreateTicket = () => {
+        this.props.onTicketCreate();
+    };
+
+    handleRemove = (ticketId) => {
+        this.props.onTicketRemove(ticketId);
+    };
+
+    handleTicketChange = (ticket) => {
+        this.props.onTicketChange(ticket);
+    };
 }

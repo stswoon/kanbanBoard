@@ -2,10 +2,14 @@
 
 import React, {Component} from "react";
 import "./Board.less";
-import {BoardColumn} from "./BoardColumn";
+import {BoardColumn} from "../boardcolumn/BoardColumn";
 import {strings} from "../../../shared/services/strings";
 import {DragDropContext} from "react-beautiful-dnd";
-import type {TicketStatus, TicketType} from "./BoardTypes";
+import type {TicketStatus, TicketType} from "../../BoardModels";
+import {bindActionCreators} from "redux";
+import {loginActions} from "../../../login/LoginFormRedux";
+import {connect} from "react-redux";
+import {boardActions} from "./BoardRedux";
 
 const columnTypes: TicketStatus[] = ["BACKLOG", "IN_PROGRESS", "DONE"];
 
@@ -51,7 +55,51 @@ const updateTickets = (tickets: TicketType[], newTickets: TicketType[]) => {
     return result;
 };
 
-export class Board extends Component {
+class Board extends Component {
+    componentDidUpdate(prevProps) {
+        if (this.props.userEmail !== prevProps.userEmail) {
+            this.actions.loadBoard(this.props.userEmail);
+        }
+    }
+
+    render() {
+        const columns = columnTypes.map((columnType: TicketStatus) => {
+            const columnTickets = getSortedTicketsByColumnType(this.props.tickets, columnType);
+            const createFlag = columnType === "BACKLOG";
+            return (
+                <BoardColumn key={columnType} columnType={columnType}
+                             name={strings.board.columnTypes[columnType]}
+                             tickets={columnTickets} createFlag={createFlag}
+                             onTicketCreate={this.handleTicketCreate}
+                             onTicketRemove={this.handleTicketRemove}
+                             onTicketChange={this.handleTicketChange}
+                />
+            );
+        });
+        return (
+            <DragDropContext onDragEnd={this.onDragEnd}>
+                <div className="board">{columns}</div>
+            </DragDropContext>
+        );
+    }
+
+    handleTicketCreate = () => {
+        const ticket = {boardId: this.props.boardId, status: "BACKLOG"};
+        this.props.actions.createTicket(this.props.userEmail, ticket);
+    };
+
+    handleTicketRemove = (ticketId) => {
+        this.props.actions.removeTicket(ticketId);
+    };
+
+    handleTicketChange = (ticket) => {
+        this.props.actions.saveTicket(ticket);
+    };
+
+    handleTicketPositionChange = (tickets) => {
+        this.props.actions.saveBoard(this.props.userEmail, tickets);
+    };
+
     onDragEnd = ({source, destination}) => {
         if (!destination) {
             return; //dropped outside the board columns
@@ -65,7 +113,7 @@ export class Board extends Component {
             let columnTickets = getSortedTicketsByColumnType(this.props.tickets, columnType);
             columnTickets = reorderTickets(columnTickets, source.index, destination.index);
             const newTickets = updateTickets(this.props.tickets, columnTickets);
-            this.props.onTicketPositionChange(newTickets);
+            this.handleTicketPositionChange(newTickets);
         } else {
             //different column
             console.log("Move ticket to different column");
@@ -81,24 +129,24 @@ export class Board extends Component {
             );
             const newTickets = updateTickets(this.props.tickets,
                 sourceColumnTickets.concat(destinationColumnTickets));
-            this.props.onTicketPositionChange(newTickets);
+            this.handleTicketPositionChange(newTickets);
         }
 
     };
-
-    render() {
-        const columns = columnTypes.map((columnType: TicketStatus) => {
-            const columnTickets = getSortedTicketsByColumnType(this.props.tickets, columnType);
-            return (
-                <BoardColumn key={columnType} columnType={columnType}
-                             name={strings.board.columnTypes[columnType]}
-                             tickets={columnTickets}/>
-            );
-        });
-        return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                <div className="board">{columns}</div>
-            </DragDropContext>
-        );
-    }
 }
+
+function mapStateToProps(state) {
+    const {boardReducer, loginReducer} = state;
+    return {
+        userEmail: loginReducer.userEmail,
+        tickets: boardReducer.tickets,
+        loading: boardReducer.loading
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {actions: bindActionCreators(boardActions, dispatch)};
+}
+
+const connected = connect(mapStateToProps, mapDispatchToProps)(Board);
+export {connected as Board};

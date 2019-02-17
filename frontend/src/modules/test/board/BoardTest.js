@@ -7,18 +7,13 @@ import {Board} from "./components/board/Board";
 import type {TicketType} from "./components/board/BoardTypes";
 
 
-export class KanbanBoardPage extends Component {
+export class BoardTest extends Component {
     state = {
         tickets: tickets
     };
 
     render() {
-        return (
-            <React.Fragment>
-                <header><Header/></header>
-                <article><Board tickets={tickets} onTicketPositionChange={this.ticketPositionChange}/></article>
-            </React.Fragment>
-        )
+        return (<Board tickets={tickets} onTicketPositionChange={this.ticketPositionChange}/>)
     }
 
     ticketPositionChange = (tickets: TicketType[]) => {

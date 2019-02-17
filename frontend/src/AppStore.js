@@ -1,14 +1,13 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {createLogger} from "redux-logger";
 import thunkMiddleware from "redux-thunk";
-import {bobOilTableReducer} from "./modules/board/KanbanBoardRedux";
+import {boardReducer} from "./modules/board/components/board/BoardRedux";
+import {loginReducer} from "./modules/login/LoginFormRedux";
 
 const loggerMiddleware = createLogger();
 
 let _store;
-const rootReducer = combineReducers({
-    bobOilTableReducer
-});
+const rootReducer = combineReducers({loginReducer, boardReducer});
 
 if (process.env.NODE_ENV === "production") {
     _store = createStore(
@@ -27,4 +26,4 @@ if (process.env.NODE_ENV === "production") {
     );
 }
 
-export const bobbyStore = _store;
+export const boardStore = _store;

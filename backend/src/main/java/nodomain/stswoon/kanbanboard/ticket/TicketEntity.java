@@ -33,5 +33,5 @@ public class TicketEntity implements Identifiable<UUID> {
     @Column
     private TicketStatus status;
     @Column
-    private int order;
+    private int orderInBoard; //order is reserved
 }

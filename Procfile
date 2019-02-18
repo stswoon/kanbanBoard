@@ -1,1 +1,1 @@
-web: java -jar -Dspring.profiles.active=prod target/backend-0.0.1-SNAPSHOT.jar
+web: java -jar -Dspring.profiles.active=prod backend/target/backend-0.0.1-SNAPSHOT.jar

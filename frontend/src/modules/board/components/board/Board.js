@@ -95,7 +95,7 @@ class Board extends Component {
 
     handleTicketCreate = () => {
         const ticket = {boardId: this.props.boardId, status: "BACKLOG"};
-        this.props.actions.createTicket(this.props.userEmail, ticket);
+        this.props.actions.createTicket(ticket);
     };
 
     handleTicketRemove = (ticketId) => {
@@ -107,7 +107,7 @@ class Board extends Component {
     };
 
     handleTicketPositionChange = (tickets) => {
-        this.props.actions.saveBoard(this.props.userEmail, tickets);
+        this.props.actions.saveBoard(this.props.boardId, tickets);
     };
 
     onDragEnd = ({source, destination}) => {
@@ -149,6 +149,7 @@ function mapStateToProps(state) {
     const {boardReducer, loginReducer} = state;
     return {
         userEmail: loginReducer.userEmail,
+        boardId: boardReducer.boardId,
         tickets: boardReducer.tickets,
         loading: boardReducer.loading
     };

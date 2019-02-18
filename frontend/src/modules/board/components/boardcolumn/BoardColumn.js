@@ -24,8 +24,12 @@ export class BoardColumn extends Component {
         });
         return (
             <div className={"board-column" + " " + "_" + this.props.columnType.toLocaleLowerCase()}>
-                <h4 className="board-column__title">{this.props.name}</h4>
-                {this.props.createFlag && <Button type="primary" icon="plus" onClick={this.handleCreateTicket}/>}
+                <h4 className="board-column__title">
+                    {this.props.name}
+                    {this.props.createFlag && <Button className="board-column__add-ticket" type="primary" icon="plus"
+                                                      onClick={this.handleCreateTicket}/>}
+                </h4>
+
                 <Droppable droppableId={"droppable_" + this.props.columnType}>
                     {(provided) => {
                         return (

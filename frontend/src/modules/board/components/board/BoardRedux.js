@@ -33,9 +33,10 @@ export const boardReducer = (state = defaultSate, action) => {
         case actionTypes.BOARD_STORE_BOARD_ID:
             return {...state, boardId: action.boardId};
         case actionTypes.BOARD_CREATE_TICKET:
-            return {...state, operations: [action.ticket, ...state.tickets]};
+            const newState = {...state, tickets: [action.ticket, ...state.tickets]};
+            return newState;
         case actionTypes.BOARD_REMOVE_TICKET: {
-            let tickets = state.tickets.filter(item => item.id !== action.id);
+            let tickets = state.tickets.filter(item => item.id !== action.ticketId);
             return {...state, tickets};
         }
         case actionTypes.BOARD_SAVE_TICKET: {
@@ -65,30 +66,30 @@ function loadBoard(userEmail) {
     };
 }
 
-function saveBoard(userEmail, tickets) {
-    console.info(`Saving tickets for '${userEmail}'`);
+function saveBoard(boardId, tickets) {
+    console.info(`Saving tickets for board '${boardId}'`);
     return async (dispatch) => {
         dispatch(loading(true));
         try {
-            await BoardService.saveBoard(userEmail, tickets);
+            await BoardService.saveBoard(boardId, tickets);
             dispatch(storeTickets(tickets));
         } catch (cause) {
-            console.error(`Failed to save tickets for ${userEmail}`, cause);
+            console.error(`Failed to save tickets for board ${boardId}`, cause);
             message.error(strings.systemErrorContactAdmin);
         }
         dispatch(loading(false));
     };
 }
 
-function createTicket(userEmail, ticket) {
-    console.info(`Create ticket for '${userEmail}' with data: ${ticket}`);
+function createTicket(ticket) {
+    console.info(`Create ticket with data: ${ticket}`);
     return async (dispatch) => {
         dispatch(loading(true));
         try {
-            let ticket = await BoardService.createTicket(userEmail, ticket);
-            dispatch(_createTicket(ticket.id));
+            let response = await BoardService.createTicket(ticket);
+            dispatch(_createTicket(response.data));
         } catch (cause) {
-            console.error(`Failed to create ticket for ${userEmail}`, cause);
+            console.error(`Failed to create ticket`, cause);
             message.error(strings.systemErrorContactAdmin);
         }
         dispatch(loading(false));
@@ -132,8 +133,8 @@ function loading(loading) {
 }
 
 //add first
-function _createTicket(ticketId) {
-    return {type: actionTypes.BOARD_CREATE_TICKET, ticket: {id: ticketId}};
+function _createTicket(ticket) {
+    return {type: actionTypes.BOARD_CREATE_TICKET, ticket};
 }
 
 function _saveTicket(ticket) {

@@ -2,7 +2,7 @@
 
 import React, {Component} from "react";
 import "./Header.less";
-import {Avatar, Button, Icon, Spin} from "antd";
+import {Button, Icon, Spin} from "antd";
 import {strings} from "../shared/services/strings";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
@@ -24,14 +24,15 @@ class Header extends Component<Props, State> {
         );
 
         const loaderIcon = <Icon type="loading" style={{fontSize: 24}} spin/>;
-        const loader = <div>{strings.header.loader}<Spin indicator={loaderIcon}/></div>;
+        const loader = <div className="header__control">{strings.header.loader}<Spin indicator={loaderIcon}/></div>;
 
         const controls = (
             <div className="header__controls">
                 {this.props.loading && loader}
-                <Button icon="github" onClick={this.redirectToGitHub}>{strings.header.goToGitHub}</Button>
-                <Avatar size="large">{this.props.userEmail}</Avatar>
-                <Button icon="logout" onClick={this.logout}>{strings.header.logout}</Button>
+                <Button icon="github" onClick={this.redirectToGitHub}
+                        className="header__control">{strings.header.goToGitHub}</Button>
+                <span className="header__control">{strings.header.loggedAs + this.props.userEmail}</span>
+                <a href="#" className="header__control" icon="logout" onClick={this.logout}>{strings.header.logout}</a>
             </div>
         );
 

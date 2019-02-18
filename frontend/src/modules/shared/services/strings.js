@@ -4,7 +4,8 @@ export const strings = {
         title: "Kanban Board",
         version: "v0.0.1",
         loader: "Synchronization",
-        logout: "Logout",
+        logout: "(logout)",
+        loggedAs: "Logged as ",
         goToGitHub: "GitHub"
     },
     board: {
@@ -15,6 +16,9 @@ export const strings = {
         }
     },
     ticket: {
+        areYouSure: "Are you sure to remove ticket?",
+        remove: "Remove",
+        cancel: "Cancel",
         noname: "[No name]",
         dueDate: "Due date:"
     },

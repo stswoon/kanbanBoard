@@ -1,8 +1,8 @@
 .header {
   padding-top: 2px;
   padding-bottom: 2px;
-  background-color: #cfd3ce;
-  min-width: 380px;
+  background: linear-gradient(to top, #777a77, #cfd3ce);
+  min-width: 650px;
 
   &__module-select {
     min-width: 160px;
@@ -19,7 +19,12 @@
   }
 
   &__controls {
-    display: inline-block;
+    display: flex;
     float: right;
+    align-items: center;
+
+    & .header__control {
+      margin: 0 5px;
+    }
   }
 }

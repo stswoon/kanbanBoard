@@ -2,8 +2,10 @@ export type TicketStatus = "BACKLOG" | "IN_PROGRESS" | "DONE"; //todo make statu
 
 export type TicketType = {
     id: string; //uuid
+    boardId: string; //uuid
     name?: string;
     description?: string;
     dueDate?: string; //iso
     status: TicketStatus;
+    order: number
 };

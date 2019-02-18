@@ -19,13 +19,28 @@
 
   &__header {
     height: 30px;
-    cursor: pointer;
+    cursor: move;
     background-color: @backgroundHeaderColor;
     border-radius: 0 0 10px 10px;
   }
 
-  &__name &__input {
-    font-weight: 700;
+  &__name {
+    display: flex;
+
+    .ticket__input {
+      font-weight: 700;
+    }
+
+    & .ant-btn-danger {
+      background-color: @backgroundColor;
+      border-color: @backgroundColor;
+    }
+
+    & .ant-btn-danger:hover {
+      color: #fff;
+      background-color: #ff4d4f;
+      border-color: #ff4d4f;
+    }
   }
 
   &__dueDate {

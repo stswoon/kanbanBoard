@@ -1,0 +1,25 @@
+.bob-geology-charts {
+  &__charts {
+    display: flex;
+    flex-wrap: wrap;
+
+    .ant-tabs-tabpane-inactive > & {
+      display: none;
+    }
+
+    &-item {
+      width: 33%;
+      min-width: 285px;
+    }
+  }
+
+  &__diff-chart {
+    //width: 100%; //not works because of tabs
+    min-width: 285px;
+    max-width: 750px;
+
+    .ant-tabs-tabpane-inactive > & {
+      display: none;
+    }
+  }
+}

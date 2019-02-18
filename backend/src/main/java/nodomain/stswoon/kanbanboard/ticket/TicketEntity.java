@@ -29,6 +29,7 @@ public class TicketEntity implements Identifiable<UUID> {
     @Column
     private String description;
     @Column
+    @Type(type="timestamp")
     private Date dueDate;
     @Column
     private TicketStatus status;

@@ -1,4 +1,4 @@
-package nodomain.stswoon.kanbanboard;
+package nodomain.stswoon.kanbanboard.appconfig;
 
 import nodomain.stswoon.kanbanboard.ticket.TicketEntity;
 import org.springframework.beans.factory.ObjectFactory;

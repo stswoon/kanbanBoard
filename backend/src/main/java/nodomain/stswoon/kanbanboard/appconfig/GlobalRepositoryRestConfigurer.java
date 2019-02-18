@@ -1,4 +1,4 @@
-package nodomain.stswoon.kanbanboard;
+package nodomain.stswoon.kanbanboard.appconfig;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;

@@ -1,4 +1,4 @@
-package nodomain.stswoon.kanbanboard;
+package nodomain.stswoon.kanbanboard.appconfig;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

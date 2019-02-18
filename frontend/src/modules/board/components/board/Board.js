@@ -55,7 +55,8 @@ const updateTickets = (tickets: TicketType[], newTickets: TicketType[]) => {
     return result;
 };
 
-class Board extends Component {
+//just for BoardTest
+export class SimpleBoard extends Component {
     componentDidUpdate(prevProps) {
         if (this.props.userEmail !== prevProps.userEmail) {
             this.props.actions.loadBoard(this.props.userEmail);
@@ -159,5 +160,5 @@ function mapDispatchToProps(dispatch) {
     return {actions: bindActionCreators(boardActions, dispatch)};
 }
 
-const connected = connect(mapStateToProps, mapDispatchToProps)(Board);
+const connected = connect(mapStateToProps, mapDispatchToProps)(SimpleBoard);
 export {connected as Board};

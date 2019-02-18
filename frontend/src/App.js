@@ -5,15 +5,24 @@ import {BrowserRouter, Route} from "react-router-dom";
 import {LoginPage} from "./modules/login/LoginPage";
 import Provider from "react-redux/es/components/Provider";
 import {boardStore} from "./AppStore";
+import {BoardTest} from "./modules/test/board/BoardTest";
 
 export default class App extends Component {
     render() {
+        const routes = [
+            <Route key="index" exact path='/' component={BoardPage}/>,
+            <Route key="login" exact path='/login' component={LoginPage}/>
+        ];
+
+        if (process.env.NODE_ENV !== "production") {
+            routes.push(<Route key="testBoard" exact path='/testBoard' component={BoardTest}/>)
+        }
+
         return (
             <Provider store={boardStore}>
                 <BrowserRouter>
                     <div>
-                        <Route exact path='/' component={BoardPage}/>
-                        <Route exact path='/login' component={LoginPage}/>
+                        {routes}
                     </div>
                 </BrowserRouter>
             </Provider>

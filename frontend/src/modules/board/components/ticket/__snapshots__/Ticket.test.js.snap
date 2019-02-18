@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div
+  className="ticket"
+>
+  <div
+    className="ticket__header"
+  />
+  <div
+    className="ticket__name"
+  >
+    <Input
+      className="ticket__input"
+      defaultValue="Requirements"
+      disabled={false}
+      name="name"
+      onChange={[Function]}
+      type="text"
+    />
+    <Popconfirm
+      cancelText="Cancel"
+      icon={
+        <Icon
+          theme="filled"
+          type="exclamation-circle"
+        />
+      }
+      okText="Remove"
+      okType="primary"
+      onConfirm={[Function]}
+      placement="top"
+      title="Are you sure to remove ticket?"
+      transitionName="zoom-big"
+      trigger="click"
+    >
+      <Button
+        block={false}
+        ghost={false}
+        icon="delete"
+        loading={false}
+        type="danger"
+      />
+    </Popconfirm>
+  </div>
+  <div
+    className="ticket__dueDate"
+  >
+    <span
+      className="ticket__input-name"
+    >
+      Due date:
+    </span>
+    <PickerWrapper
+      className="ticket__input"
+      defaultValue={"2019-03-07T00:00:00.000Z"}
+      locale={Object {}}
+      onChange={[Function]}
+      onOk={[Function]}
+      onOpenChange={[Function]}
+      placeholder=""
+      popupStyle={Object {}}
+      transitionName="slide-up"
+    />
+  </div>
+  <div
+    className="ticket__description"
+  >
+    <TextArea
+      className="ticket__input"
+      defaultValue="Lorem ipsum"
+      name="description"
+      onChange={[Function]}
+      rows={4}
+    />
+  </div>
+</div>
+`;

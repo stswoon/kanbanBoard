@@ -20,3 +20,15 @@ spring.profiles.include:
 - common
 
 spring.datasource.url: jdbc:sqlite:./target/localDb.db
+
+
+---
+spring.profiles: prod
+spring.profiles.include:
+- common
+
+datasource:
+  url: ${JDBC_DATABASE_URL:}
+  hikari:
+    connection-timeout: 30000
+    maximum-pool-size: 10

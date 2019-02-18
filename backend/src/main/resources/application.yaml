@@ -1,10 +1,12 @@
 spring.profiles.active: local
 
+
 ---
 spring.profiles: common
 
 spring.jpa.properties.hibernate.dialect: com.enigmabridge.hibernate.dialect.SQLiteDialect
 spring.jpa.hibernate.ddl-auto: create
+spring.jpa.show-sql: true
 
 
 ---
@@ -13,6 +15,7 @@ spring.profiles.include:
 - common
 
 spring.datasource.url: jdbc:sqlite:./db/localDb.db
+
 
 ---
 spring.profiles: test
@@ -26,6 +29,9 @@ spring.datasource.url: jdbc:sqlite:./target/localDb.db
 spring.profiles: prod
 spring.profiles.include:
 - common
+
+server:
+  port: ${PORT:8080}
 
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults: false

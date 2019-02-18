@@ -27,6 +27,8 @@ spring.profiles: prod
 spring.profiles.include:
 - common
 
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
+
 datasource:
   url: ${JDBC_DATABASE_URL:}
   hikari:

@@ -29,6 +29,7 @@ spring.profiles.include:
 
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
 spring.jpa.properties.hibernate.temp.use_jdbc_metadata_defaults: false
+spring.jpa.properties.hibernate.dialect:  org.hibernate.dialect.PostgreSQLDialect
 
 datasource:
   url: ${JDBC_DATABASE_URL:}

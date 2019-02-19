@@ -12,6 +12,7 @@
 1. Backend: Java + Spring Boot
 1. Frontend: React + Router + Redux + Antd
 1. RestFull service 
+1. Dran-n-Drop
 1. Security **out-of-scope** 
 1. Localization **out-of-scope** (не успел)
 1. Sharing work **out-of-scope**

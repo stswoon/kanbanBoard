@@ -9,15 +9,8 @@ import javax.servlet.Filter;
 
 @SpringBootApplication
 public class KanbanBoardApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(KanbanBoardApplication.class, args);
-    }
-
-    @Bean
-    public Filter filter() {
-        ShallowEtagHeaderFilter filter = new ShallowEtagHeaderFilter();
-        return filter;
     }
 }
 

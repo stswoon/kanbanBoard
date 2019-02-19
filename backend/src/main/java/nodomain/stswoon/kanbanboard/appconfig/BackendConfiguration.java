@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Profile;
 
 import javax.sql.DataSource;
 
-//s
 @Profile("prod")
 @Configuration
 public class BackendConfiguration {

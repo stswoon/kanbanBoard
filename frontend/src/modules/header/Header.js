@@ -19,6 +19,7 @@ type Props = {
 
 class Header extends Component<Props> {
     render() {
+        //in future it's better to create PrivateRoute HOC
         if (!this.props.userEmail) {
             return (<Redirect to={"/login"}/>);
         }

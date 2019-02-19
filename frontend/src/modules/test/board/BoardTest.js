@@ -1,7 +1,7 @@
 //@flow
 
 import React, {Component} from "react";
-import type {TicketType} from "../../board/BoardModels";
+import type {Ticket} from "../../board/BoardModels";
 import {SimpleBoard} from "../../board/components/board/Board";
 
 export class BoardTest extends Component {
@@ -10,7 +10,7 @@ export class BoardTest extends Component {
     render() {
         const actions = {
             loadBoard: () => {},
-            saveBoard: (tickets: TicketType[]) => {
+            saveBoard: (tickets: Ticket[]) => {
                 this.setState(tickets)
             }
         };
@@ -20,7 +20,7 @@ export class BoardTest extends Component {
     }
 }
 
-const tickets: TicketType[] = [
+const tickets: Ticket[] = [
     {
         "id": "d5e3adf4-d88e-426f-a734-aabe3f82eb99",
         "name": "Requirements",

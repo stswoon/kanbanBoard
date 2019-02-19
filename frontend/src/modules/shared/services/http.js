@@ -1,7 +1,6 @@
 // @flow
 
 import axios from 'axios';
-import {strings} from "./strings";
 
 type Method = "get" | "post" | "put" | "delete";
 
@@ -24,7 +23,6 @@ export const HttpService = {
         const config = {
             method, url,
             headers: {
-                "Authorization": "Basic Ym9iYnk6ZHJpbGw0Mg==",  //todo
                 "Content-Type": "application/json;charset=UTF-8"
             }
         };

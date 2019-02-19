@@ -34,7 +34,7 @@ public class UserService {
      * Get user and tickets or create user with empty board
      * @return return user data and tickets
      */
-    @Transactional  //todo check
+    @Transactional //to make several SQL in one transaction
     public @NonNull Triple<UserEntity, BoardEntity, List<TicketEntity>> getUserAndBoard(@NonNull String userEmail) {
         UserEntity userEntity = userRepository.findByEmail(userEmail);
         BoardEntity boardEntity = null;

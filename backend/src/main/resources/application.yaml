@@ -7,6 +7,8 @@ spring.profiles: common
 spring.jpa.properties.hibernate.dialect: com.enigmabridge.hibernate.dialect.SQLiteDialect
 spring.jpa.hibernate.ddl-auto: create
 spring.jpa.show-sql: true
+spring.jackson.default-property-inclusion: NON_NULL
+
 
 
 ---

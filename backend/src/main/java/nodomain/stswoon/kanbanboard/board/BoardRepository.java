@@ -1,6 +1,5 @@
 package nodomain.stswoon.kanbanboard.board;
 
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.lang.NonNull;
 

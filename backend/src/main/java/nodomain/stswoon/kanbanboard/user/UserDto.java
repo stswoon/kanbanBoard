@@ -20,5 +20,3 @@ public class UserDto {
     @NonNull
     private List<TicketDto> ticketDtos;
 }
-
-//todo make mapper skip null

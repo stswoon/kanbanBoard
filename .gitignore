@@ -2,8 +2,9 @@
 /frontend/node
 /frontend/node_modules
 /backend/target
-/backend/src/main/resources/static/main.css
-/backend/src/main/resources/static/main.js
+/backend/src/main/resources/main.css
+/backend/src/main/resources/main.js
+/db/localDb.db
 
 !.mvn/wrapper/maven-wrapper.jar
 

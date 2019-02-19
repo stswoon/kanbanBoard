@@ -2,17 +2,22 @@
 
 import React, {Component} from "react";
 import {Button, DatePicker, Input, Popconfirm} from "antd";
-import "./Ticket.less";
+import "./TicketCard.less";
 import moment from "moment";
 import {strings} from "../../../shared/services/strings";
 import {utils} from "../../../shared/services/utils";
-import type {TicketType} from "../../BoardModels";
+import type {Ticket, UUID} from "../../BoardModels";
 
 const debounce = require('lodash.debounce');
 const {TextArea} = Input;
 
+type Props = Ticket | {
+    onChange: (ticket: Ticket) => void,
+    onRemove: (ticketId: UUID) => void
+};
+type State = Ticket;
 
-export class Ticket extends Component<Props> {
+export class TicketCard extends Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +30,6 @@ export class Ticket extends Component<Props> {
             order: this.props.order
         };
     }
-
 
     render() {
         return (
@@ -66,7 +70,10 @@ export class Ticket extends Component<Props> {
     };
 
     handleDateChange = (date, dateString) => {
-        console.log(date, dateString); //todo
+        console.log(date, dateString);
+        this.setState({dueDate: dateString}, () => {
+            this.handleChange();
+        });
     };
 
     debounceHandleChange;
@@ -82,5 +89,3 @@ export class Ticket extends Component<Props> {
         this.debounceHandleChange();
     }
 }
-
-type Props = TicketType;

@@ -18,6 +18,7 @@ public class WebResourceConfiguration implements WebMvcConfigurer {
                 .setCacheControl(CacheControl.maxAge(365, TimeUnit.DAYS))
                 .resourceChain(true)
                 .addResolver(new VersionResourceResolver().addVersionStrategy(new ContentVersionStrategy(), "/**"));
-        registry.addResourceHandler("/**").setCacheControl(CacheControl.empty().mustRevalidate());
+
+        registry.addResourceHandler("/**").setCacheControl(CacheControl.empty().mustRevalidate()); //for ETAG
     }
 }

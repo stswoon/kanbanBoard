@@ -1,11 +1,16 @@
-export type TicketStatus = "BACKLOG" | "IN_PROGRESS" | "DONE"; //todo make status backlog if null
+export type TicketStatus = "BACKLOG" | "IN_PROGRESS" | "DONE";
 
-export type TicketType = {
-    id: string; //uuid
-    boardId: string; //uuid
+export type UUID = string;
+export type IsoDate = string;
+
+export type Ticket = {
+    id: UUID;
+    boardId: UUID;
     name?: string;
     description?: string;
-    dueDate?: string; //iso
+    dueDate?: IsoDate;
     status: TicketStatus;
     order: number
 };
+
+export const DROPPABLE_PREFIX = "droppable_";

@@ -9,10 +9,10 @@ import javax.servlet.Filter;
 
 @Configuration
 public class FilterConfiguration {
-    @Bean
-    public ResourceUrlEncodingFilter resourceUrlEncodingFilter() {
-        return new ResourceUrlEncodingFilter();
-    }
+//    @Bean
+//    public ResourceUrlEncodingFilter resourceUrlEncodingFilter() {
+//        return new ResourceUrlEncodingFilter();
+//    }
 
     @Bean
     public Filter filter() {

@@ -1,6 +1,9 @@
+// @flow
+
 import {strings} from "../../../shared/services/strings";
 import {BoardService} from "./BoardService";
 import {message} from "antd";
+import type {Ticket, UUID} from "../../BoardModels";
 
 export const boardActions = {
     loadBoard,
@@ -50,7 +53,7 @@ export const boardReducer = (state = defaultSate, action) => {
     }
 };
 
-function loadBoard(userEmail) {
+function loadBoard(userEmail: string) {
     console.info(`Getting tickets for '${userEmail}'`);
     return async (dispatch) => {
         dispatch(loading(true));
@@ -66,7 +69,7 @@ function loadBoard(userEmail) {
     };
 }
 
-function saveBoard(boardId, tickets) {
+function saveBoard(boardId: UUID, tickets: Ticket[]) {
     console.info(`Saving tickets for board '${boardId}'`);
     return async (dispatch) => {
         dispatch(loading(true));
@@ -81,7 +84,7 @@ function saveBoard(boardId, tickets) {
     };
 }
 
-function createTicket(ticket) {
+function createTicket(ticket: Ticket) {
     console.info(`Create ticket with data: ${ticket}`);
     return async (dispatch) => {
         dispatch(loading(true));
@@ -96,7 +99,7 @@ function createTicket(ticket) {
     };
 }
 
-function saveTicket(ticket) {
+function saveTicket(ticket: Ticket) {
     console.info("Update ticket = '" + ticket.id + "' with data: ", ticket);
     return async (dispatch) => {
         dispatch(loading(true));
@@ -111,7 +114,7 @@ function saveTicket(ticket) {
     };
 }
 
-function removeTicket(ticketId) {
+function removeTicket(ticketId: UUID) {
     console.info(`Remove ticket '${ticketId}'`);
     return async (dispatch) => {
         dispatch(loading(true));
@@ -128,27 +131,27 @@ function removeTicket(ticketId) {
 
 //-----private api
 
-function loading(loading) {
+function loading(loading: boolean) {
     return {type: actionTypes.BOARD_LOADING, loading};
 }
 
 //add first
-function _createTicket(ticket) {
+function _createTicket(ticket: Ticket) {
     return {type: actionTypes.BOARD_CREATE_TICKET, ticket};
 }
 
-function _saveTicket(ticket) {
+function _saveTicket(ticket: Ticket) {
     return {type: actionTypes.BOARD_SAVE_TICKET, ticket}
 }
 
-function _removeTicket(ticketId) {
+function _removeTicket(ticketId: UUID) {
     return {type: actionTypes.BOARD_REMOVE_TICKET, ticketId}
 }
 
-function storeTickets(tickets) {
+function storeTickets(tickets: Ticket[]) {
     return {type: actionTypes.BOARD_STORE_TICKETS, tickets};
 }
 
-function storeBoardId(boardId) {
+function storeBoardId(boardId: UUID) {
     return {type: actionTypes.BOARD_STORE_BOARD_ID, boardId};
 }

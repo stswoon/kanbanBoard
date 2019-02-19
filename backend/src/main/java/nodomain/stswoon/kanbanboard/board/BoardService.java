@@ -56,7 +56,7 @@ public class BoardService {
 
     public @NonNull BoardEntity getBoardByUser(@NonNull UUID userId) {
         List<BoardEntity> boardEntities = boardRepository.findByUserId(userId);
-        //Today only one board per user is supported so
+        //today only one board per user is supported so
         if (boardEntities.size() != 1) {
             throw new IllegalStateException("There are " + boardEntities.size() + " boards for user id='" + userId + "' but must be 1");
         }

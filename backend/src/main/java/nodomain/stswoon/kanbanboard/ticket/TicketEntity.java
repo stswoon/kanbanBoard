@@ -23,7 +23,7 @@ public class TicketEntity implements Identifiable<UUID> {
     private UUID id;
     @Column(nullable = false)
     @Type(type = "uuid-char")
-    private UUID boardId; //todo: see https://gigsterous.github.io/engineering/2016/09/25/spring-boot-2.html
+    private UUID boardId;
     @Column
     private String name;
     @Column(length = 1000)

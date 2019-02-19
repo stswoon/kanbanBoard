@@ -9,6 +9,7 @@ export const strings = {
         goToGitHub: "GitHub"
     },
     board: {
+        emptyEmail: "Please enter user email to see its board",
         columnTypes: {
             BACKLOG: "Backlog",
             IN_PROGRESS: "In Progress",

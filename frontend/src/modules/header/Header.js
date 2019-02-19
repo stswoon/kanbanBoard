@@ -9,7 +9,15 @@ import {bindActionCreators} from "redux";
 import {loginActions} from "../login/LoginFormRedux";
 import {Redirect} from "react-router-dom";
 
-class Header extends Component<Props, State> {
+type Props = {
+    loading: boolean,
+    userEmail: string,
+    actions: {
+        logout: () => void
+    }
+};
+
+class Header extends Component<Props> {
     render() {
         if (!this.props.userEmail) {
             return (<Redirect to={"/login"}/>);
@@ -24,7 +32,9 @@ class Header extends Component<Props, State> {
         );
 
         const loaderIcon = <Icon type="loading" style={{fontSize: 24}} spin/>;
-        const loader = <div className="header__control">{strings.header.loader}<Spin indicator={loaderIcon}/></div>;
+        const loader = <div className="header__control">{strings.header.loader}
+            <Spin className="header__control-loader" indicator={loaderIcon}/>
+        </div>;
 
         const controls = (
             <div className="header__controls">
@@ -47,9 +57,6 @@ class Header extends Component<Props, State> {
     redirectToGitHub = () => window.location.href = "https://github.com/stswoon/kanbanBoard";
     logout = () => this.props.actions.logout();
 }
-
-type Props = {};
-type State = {};//https://flow.org/en/docs/react/components/
 
 function mapStateToProps(state) {
     const {loginReducer, boardReducer} = state;

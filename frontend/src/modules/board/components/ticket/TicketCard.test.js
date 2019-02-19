@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from "enzyme";
 import {shallowToJson} from 'enzyme-to-json';
-import {Ticket} from "./Ticket";
+import {TicketCard} from "./Ticket";
 
 const ticket = {
     "id": "d5e3adf4-d88e-426f-a734-aabe3f82eb99",
@@ -12,7 +12,7 @@ const ticket = {
 };
 
 it('renders without crashing', () => {
-    const ar = shallow(<Ticket {...ticket}/>);
+    const ar = shallow(<TicketCard {...ticket}/>);
     expect(shallowToJson(ar)).toMatchSnapshot();
 });
 

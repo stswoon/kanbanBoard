@@ -6,8 +6,6 @@ import {LoginPage} from "./modules/login/LoginPage";
 import Provider from "react-redux/es/components/Provider";
 import {boardStore} from "./AppStore";
 import {BoardTest} from "./modules/test/board/BoardTest";
-require('core-js'); //for IE11
-require('string.prototype.startswith'); //for IE11
 
 export default class App extends Component {
     render() {

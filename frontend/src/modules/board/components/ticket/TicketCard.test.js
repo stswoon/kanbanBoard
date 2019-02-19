@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from "enzyme";
 import {shallowToJson} from 'enzyme-to-json';
-import {TicketCard} from "./Ticket";
+import {TicketCard} from "./TicketCard";
 
 const ticket = {
     "id": "d5e3adf4-d88e-426f-a734-aabe3f82eb99",

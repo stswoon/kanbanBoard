@@ -113,6 +113,36 @@
                             </resources>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>copy-resource-two</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${basedir}/src/main/resources/static/ng</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${basedir}/../fe-ng/dist/fe</directory>
+                                    <includes>
+                                        <include>styles.css</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/../fe-ng/dist/fe</directory>
+                                    <includes>
+                                        <include>main.js</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/../fe-ng/dist/fe</directory>
+                                    <includes>
+                                        <include>es2015-polyfills.js</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>

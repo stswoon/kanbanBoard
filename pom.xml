@@ -17,6 +17,7 @@
 
     <modules>
         <module>frontend</module>
+        <module>fe-ng</module>
         <module>backend</module>
     </modules>
 

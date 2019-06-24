@@ -9,4 +9,9 @@ public class IndexViewController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping("/angular")
+    public String indexNg() {
+        return "index-ng";
+    }
 }

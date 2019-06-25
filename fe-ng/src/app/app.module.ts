@@ -7,8 +7,8 @@ import {LoginComponent} from './components/login/login.component';
 import {BoardComponent} from './components/board/board.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ButtonModule} from "primeng/button";
-import {InputTextModule} from "primeng/primeng";
-import {FormsModule} from "@angular/forms";
+import {InputTextModule, MessageModule} from "primeng/primeng";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CanActivateBoardService} from "./components/board/can-activate-board.service";
 import {LoginService} from "./components/login/login.service";
 import {BoardService} from "./components/board/board.service";
@@ -23,9 +23,11 @@ import {BoardService} from "./components/board/board.service";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     ButtonModule,
     InputTextModule,
-    FormsModule
+    MessageModule,
+    ReactiveFormsModule
   ],
   providers: [
     CanActivateBoardService,

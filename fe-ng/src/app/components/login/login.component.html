@@ -1,0 +1,15 @@
+<!--todo:sts form state-->
+<div class="login-page">
+
+  <div class="login-form">
+
+    <div class="ui-inputgroup login-form__field">
+      <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+      <input type="text" placeholder="User e-mail" pInputText [(ngModel)]="email">
+    </div>
+
+    <p-button label="Login" (click)="login($event)" [disabled]="!isLoginFormValid()"></p-button>
+
+  </div>
+
+</div>

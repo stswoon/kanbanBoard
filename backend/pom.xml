@@ -125,19 +125,7 @@
                                 <resource>
                                     <directory>${basedir}/../fe-ng/dist/fe</directory>
                                     <includes>
-                                        <include>styles.css</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>${basedir}/../fe-ng/dist/fe</directory>
-                                    <includes>
-                                        <include>main.js</include>
-                                    </includes>
-                                </resource>
-                                <resource>
-                                    <directory>${basedir}/../fe-ng/dist/fe</directory>
-                                    <includes>
-                                        <include>es2015-polyfills.js</include>
+                                        <include>*</include>
                                     </includes>
                                 </resource>
                             </resources>

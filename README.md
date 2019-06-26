@@ -1,6 +1,8 @@
 # Kanban Board
 Аппликейшен в интернете - https://stswoon-kanban-board.herokuapp.com
 
+Angular2+ версия - https://stswoon-kanban-board.herokuapp.com/angular
+
 ![](docs/screen.png)
 
 ## Задача
@@ -58,8 +60,21 @@
 1. Тест сервиса и компоненты - BoardService.test.js и TicketCard.test.js соответственно
 1. Добавлена анимация при наведении на тикет (всплытие чуть вверх и обводка рамки)
 
+### Front - NG
+1. HttpService - сервис для http запросов
+1. strings.ts - вынесенны все текстовые константы
+1. LoginModule - использует ReactiveForms, имеет валидацию данных
+1. TicketComponent - имеет debounce чтобы не созранять на сервер каждый символ, использует ReactiveForms
+1. BoardService - взаимодействие с беком, при изменени тикета отпрявляется апдейт только тикета, при перемещщении тикета отправляется весь борд, т.к., в общем случае, нужно одновить ордер для всех тикетов.
+1. HeaderModule - хедер выделен в отдельный модуль для повторного использования
+1. Добавлена анимация при наведении на тикет (всплытие чуть вверх и обводка рамки)
+1. SharedModule - общие сервисы и 
+1. Тесты - **out-of-scope**
+
 ## Планирование
 Потрачено времени ~23h (из 24h) - https://github.com/stswoon/kanbanBoard/issues?q=is%3Aissue+is%3Aclosed
+
+На фронт для NG потрачено 13h (из 8h)
 
 ## Диаграммы
  

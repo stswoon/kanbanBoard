@@ -78,7 +78,7 @@ export class BoardComponent implements OnInit, OnDestroy {
         event.currentIndex);
     }
 
-    setTicketsStatus(event.container.data, event.container.id);
+    setTicketsStatus(event.container.data, <TicketStatus>event.container.id);
     setOrderForTickets(event.container.data);
     const newTickets = updateTickets(this.tickets, event.container.data);
     this.boardService.updateTickets(newTickets);

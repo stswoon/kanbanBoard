@@ -16,7 +16,7 @@ import {CdkDragDrop} from "@angular/cdk/drag-drop";
 export class BoardComponent implements OnInit, OnDestroy {
   columnTypes = columnTypes;
 
-  private tickets: Ticket[];
+  private tickets: Ticket[] = [];
   private ticketSubscription: Subscription;
 
   constructor(private boardService: BoardService) {

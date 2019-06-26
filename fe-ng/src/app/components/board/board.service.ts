@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {Ticket} from "./board.models";
 import {HttpService} from "../../services/http/http.service";
 import {LoginService} from "../login/login.service";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class BoardService {
@@ -10,6 +11,9 @@ export class BoardService {
   }
 
   getTickets(): Observable<Ticket[]> {
-    return this.httpService.send<Ticket[]>("get", "/user/getUserAndBoard/" + this.loginService.getUserEmail());
+    return this.httpService.send<Ticket[]>("get", "/user/getUserAndBoard/" + this.loginService.getUserEmail())
+      .pipe(map((data:any) => {
+        return data.ticketDtos;
+      }));
   }
 }

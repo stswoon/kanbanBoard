@@ -20,6 +20,7 @@ import {HttpService} from "./services/http/http.service";
 import {HeaderService} from "./components/header/header.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ToastModule} from "primeng/toast";
+import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ToastModule} from "primeng/toast";
     LoginComponent,
     BoardComponent,
     HeaderComponent,
-    BoardPageComponent
+    BoardPageComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

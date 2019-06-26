@@ -4,17 +4,11 @@
   <div class="card-list mat-elevation-z1" *ngFor="let columnType of columnTypes">
     <h2 cdkDragHandle class="mat-h2">{{getColumnName(columnType)}}</h2>
 
-    <div class="card-list-content" cdkDropList [id]="columnType" [cdkDropListData]="getTickets(columnType)"
-         [cdkDropListConnectedTo]="columnTypes" (cdkDropListDropped)="onTicketDrop($event)">
-
-      <mat-card *ngFor="let ticket of getTickets(columnType) | async" cdkDrag>
-        <mat-card-content>
-          {{ticket.name}}
-          <br/>
-          {{ticket.description}}
-        </mat-card-content>
-      </mat-card>
-
+    <div class="card-list-content" cdkDropList
+         [id]="columnType" [cdkDropListData]="getTickets(columnType)" [cdkDropListConnectedTo]="columnTypes"
+         (cdkDropListDropped)="onTicketDrop($event)"
+    >
+      <app-ticket cdkDrag *ngFor="let ticket of getTickets(columnType)" [ticket]="ticket"></app-ticket>
     </div>
 
   </div>

@@ -4,11 +4,11 @@
     <div class="login-form">
 
       <div class="login-form__field">
-        <div class="ui-inputgroup ">
+        <div class="ui-inputgroup">
           <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
           <input type="text" placeholder="User e-mail" pInputText formControlName="email">
         </div>
-        <p-message severity="error" text="E-mail is required" *ngIf="isShowEmailAlert()"></p-message>
+        <p-message severity="error" text="Type alex@test.com as example" *ngIf="isShowEmailAlert()"></p-message>
       </div>
 
       <p-button label="Login" (click)="login($event)" [disabled]="!isLoginFormValid()"></p-button>

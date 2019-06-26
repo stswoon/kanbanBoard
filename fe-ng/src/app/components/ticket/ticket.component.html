@@ -1,0 +1,25 @@
+<div class="ticket">
+  <div class="ticket__header"></div>
+
+  <form [formGroup]="ticketForm">
+    <div class="ticket__name">
+      <input type="text" pInputText (/>
+      <Input class="ticket__input" defaultValue={this.props.name || strings.ticket.noname}
+             name="name" onChange={this.handleInputChange}/>
+      <Popconfirm title={strings.ticket.areYouSure} okText={strings.ticket.remove}
+                  cancelText={strings.ticket.cancel} onConfirm={this.remove}>
+        <Button type="danger" icon="delete"/>
+      </Popconfirm>
+    </div>
+    <div class="ticket__dueDate">
+      <span class="ticket__input-name">{strings.ticket.dueDate}</span>
+      <DatePicker class="ticket__input"
+                  defaultValue={this.props.dueDate && moment(this.props.dueDate)}
+                  onChange={this.handleDateChange} placeholder=""/>
+    </div>
+    <div class="ticket__description">
+                    <TextArea class="ticket__input" rows={4} defaultValue={this.props.description}
+                              name="description" onChange={this.handleInputChange}/>
+    </div>
+  </form>
+</div>

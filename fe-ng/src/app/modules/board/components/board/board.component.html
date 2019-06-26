@@ -2,7 +2,11 @@
      [cdkDropListData]="columnTypes" (cdkDropListDropped)="onTrackDrop($event)">
 
   <div class="card-list mat-elevation-z1" *ngFor="let columnType of columnTypes">
-    <h2 cdkDragHandle class="mat-h2">{{getColumnName(columnType)}}</h2>
+    <h2 cdkDragHandle class="mat-h2">
+      {{getColumnName(columnType)}}
+      <p-button *ngIf="columnType === 'BACKLOG'" icon="pi pi-plus" type="text" (click)="addTicket()"></p-button>
+    </h2>
+
 
     <div class="card-list-content" cdkDropList
          [id]="columnType" [cdkDropListData]="getTickets(columnType)" [cdkDropListConnectedTo]="columnTypes"
@@ -10,7 +14,9 @@
     >
       <div class="ticket_placeholder" *ngFor="let ticket of getTickets(columnType)" cdkDrag>
         <div class="ticket__header" cdkDragHandle></div> <!--WA for cdkDragHandle-->
-        <app-ticket cdkDrag [ticket]="ticket"></app-ticket>
+        <app-ticket cdkDrag [ticket]="ticket"
+                    (delete)="deleteTicket($event)"
+                    (changeTicket)="changeTicket($event)"></app-ticket>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {IsoDate, Ticket, UUID} from "../board/board.models";
+import {Ticket, UUID} from "../board/board.models";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import * as lodash from "lodash";
 import {strings} from "../../../shared/utils/strings";
@@ -23,7 +23,7 @@ export class TicketComponent implements OnChanges {
   delete: EventEmitter<UUID> = new EventEmitter<UUID>();
 
   @Output()
-  change: EventEmitter<Ticket> = new EventEmitter<Ticket>();
+  changeTicket: EventEmitter<Ticket> = new EventEmitter<Ticket>();
 
   ticketForm: FormGroup;
 
@@ -32,10 +32,10 @@ export class TicketComponent implements OnChanges {
 
   private debounceHandleChange: Function;
 
-  private handleChange(value: Ticket) {
+  private handleChange() {
     if (!this.debounceHandleChange) {
       let f = () => {
-        this.change.emit(utils.object.deepCopy(value));
+        this.changeTicket.emit(utils.object.deepCopy(this.ticket));
       };
       f = f.bind(this);
       this.debounceHandleChange = lodash.debounce(f, 500);
@@ -54,12 +54,17 @@ export class TicketComponent implements OnChanges {
     this.ticketForm.valueChanges.subscribe((value: Ticket) => {
       value.dueDate = value.dueDate == null ? null : moment(value.dueDate).toISOString();
       console.debug("Change ticket: ", value);
-      this.handleChange(value);
+      this.ticket = value;
+      this.handleChange();
     });
   }
 
   confirmDelete() {
     this.confirmationService.confirm({
+      header: strings.ticket.areYouSure,
+      message: strings.ticket.remove,
+      acceptLabel: strings.ticket.remove,
+      rejectLabel: strings.ticket.cancel,
       accept: () => {
         this.delete.emit(this.ticket.id);
       }

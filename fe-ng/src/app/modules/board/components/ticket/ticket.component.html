@@ -4,9 +4,6 @@
   <form [formGroup]="ticketForm">
     <div class="ticket__name">
       <input type="text" pInputText class="ticket__input" formControlName="name"/>
-      <p-confirmDialog [header]="strings.ticket.areYouSure" [message]="strings.ticket.remove"
-                       [acceptLabel]="strings.ticket.remove" [rejectLabel]="strings.ticket.cancel"
-                       icon="pi pi-exclamation-triangle"></p-confirmDialog>
       <p-button icon="pi pi-trash" type="text" (click)="confirmDelete()"></p-button>
     </div>
     <div class="ticket__dueDate">

@@ -1,12 +1,27 @@
 //https://alligator.io/angular/drag-drop/
 
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {columnTypes, Ticket, TicketStatus} from "./board.models";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {columnTypes, Ticket, TicketStatus, UUID} from "./board.models";
 import {strings} from "../../../shared/utils/strings";
 import {BoardService} from "./board.service";
-import {Observable, Subscription} from "rxjs";
-import {filter, map} from "rxjs/operators";
-import {CdkDragDrop} from "@angular/cdk/drag-drop";
+import {Subscription} from "rxjs";
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+
+const updateTickets = (tickets: Ticket[], newTickets: Ticket[]): Ticket[] => {
+  const result = tickets.map((ticket: Ticket) => {
+    const newTicket = newTickets.find((t: Ticket) => t.id === ticket.id);
+    return newTicket ? newTicket : ticket;
+  });
+  return result;
+};
+
+const setOrderForTickets = (tickets: Ticket[]): void => {
+  tickets.forEach((ticket: Ticket, index: number) => ticket.order = index);
+};
+
+const setTicketsStatus = (tickets: Ticket[], columnType: TicketStatus): void => {
+  tickets.forEach((ticket: Ticket, index: number) => ticket.status = columnType);
+};
 
 @Component({
   selector: 'app-board',
@@ -46,12 +61,38 @@ export class BoardComponent implements OnInit, OnDestroy {
     return this.getSortedTicketsByColumnType(this.tickets, columnType);
   }
 
-  onTrackDrop($event: CdkDragDrop<TicketStatus[], any>) {
-
+  onTrackDrop(event: CdkDragDrop<TicketStatus[], any>): void {
+    //moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
+    //no need here
   }
 
-  onTicketDrop($event: CdkDragDrop<Ticket[], any>) {
+  onTicketDrop(event: CdkDragDrop<Ticket[], any>): void {
+    console.log("onTicketDrop");
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
 
+    setTicketsStatus(event.container.data, event.container.id);
+    setOrderForTickets(event.container.data);
+    const newTickets = updateTickets(this.tickets, event.container.data);
+    this.boardService.updateTickets(newTickets);
   }
 
+  deleteTicket(ticketId: UUID): void {
+    this.boardService.removeTicket(ticketId);
+  }
+
+  changeTicket(ticket: Ticket): void {
+    this.boardService.saveTicket(ticket);
+  }
+
+  addTicket(): void {
+    this.boardService.addTicket();
+  }
 }

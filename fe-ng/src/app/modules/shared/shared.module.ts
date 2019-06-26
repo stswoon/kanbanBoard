@@ -4,6 +4,7 @@ import {HttpService} from "./services/http/http.service";
 import {LoginService} from "./services/login/login.service";
 import {HttpClientModule} from "@angular/common/http";
 import {MessageService} from "primeng/api";
+import {LoadingService} from "./services/loading/loading.service";
 
 @NgModule({
   declarations: [],
@@ -14,6 +15,7 @@ import {MessageService} from "primeng/api";
   providers: [
     HttpService,
     LoginService,
+    LoadingService,
 
     MessageService
   ]

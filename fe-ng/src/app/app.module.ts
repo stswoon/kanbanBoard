@@ -9,6 +9,7 @@ import {SharedModule} from "./modules/shared/shared.module";
 import {HeaderModule} from "./modules/header/header.module";
 import {BoardModule} from "./modules/board/board.module";
 import {ToastModule} from "primeng/toast";
+import {ConfirmDialogModule} from "primeng/primeng";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ToastModule} from "primeng/toast";
     LoginModule,
     HeaderModule,
     BoardModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   bootstrap: [AppComponent]
 })

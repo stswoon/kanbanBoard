@@ -8,7 +8,10 @@
          [id]="columnType" [cdkDropListData]="getTickets(columnType)" [cdkDropListConnectedTo]="columnTypes"
          (cdkDropListDropped)="onTicketDrop($event)"
     >
-      <app-ticket cdkDrag *ngFor="let ticket of getTickets(columnType)" [ticket]="ticket"></app-ticket>
+      <div class="ticket_placeholder" *ngFor="let ticket of getTickets(columnType)" cdkDrag>
+        <div class="ticket__header" cdkDragHandle></div> <!--WA for cdkDragHandle-->
+        <app-ticket cdkDrag [ticket]="ticket"></app-ticket>
+      </div>
     </div>
 
   </div>

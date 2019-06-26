@@ -1,25 +1,25 @@
 <div class="ticket">
-  <div class="ticket__header"></div>
+<!--  <div class="ticket__header" cdkDragHandle></div>-->
 
   <form [formGroup]="ticketForm">
     <div class="ticket__name">
-      <input type="text" pInputText (/>
-      <Input class="ticket__input" defaultValue={this.props.name || strings.ticket.noname}
-             name="name" onChange={this.handleInputChange}/>
-      <Popconfirm title={strings.ticket.areYouSure} okText={strings.ticket.remove}
-                  cancelText={strings.ticket.cancel} onConfirm={this.remove}>
-        <Button type="danger" icon="delete"/>
-      </Popconfirm>
+      <input type="text" pInputText class="ticket__input" formControlName="name"/>
+      <p-confirmDialog [header]="strings.ticket.areYouSure" [message]="strings.ticket.remove"
+                       [acceptLabel]="strings.ticket.remove" [rejectLabel]="strings.ticket.cancel"
+                       icon="pi pi-exclamation-triangle"></p-confirmDialog>
+      <p-button icon="pi pi-trash" type="text" (click)="confirmDelete()"></p-button>
     </div>
+    <!--
     <div class="ticket__dueDate">
       <span class="ticket__input-name">{strings.ticket.dueDate}</span>
       <DatePicker class="ticket__input"
                   defaultValue={this.props.dueDate && moment(this.props.dueDate)}
                   onChange={this.handleDateChange} placeholder=""/>
     </div>
+    -->
     <div class="ticket__description">
-                    <TextArea class="ticket__input" rows={4} defaultValue={this.props.description}
-                              name="description" onChange={this.handleInputChange}/>
+      <textarea class="ticket__input" [rows]="4" pInputTextarea autoResize="autoResize" formControlName="description">
+      </textarea>
     </div>
   </form>
 </div>

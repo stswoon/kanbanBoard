@@ -17,11 +17,12 @@ export class HeaderComponent {
     return this.headerService.getUserEMail();
   }
 
-  logout(): void {
-    this.headerService.logout();
-  }
-
   isLoading(): boolean {
     return this.headerService.isLoading();
+  }
+
+  logout($event: MouseEvent) {
+    this.headerService.logout();
+    $event.preventDefault();
   }
 }

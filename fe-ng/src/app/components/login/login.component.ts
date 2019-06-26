@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {LoginService} from "./login.service";
-import {Router} from "@angular/router";
 import {FormControl, FormGroup} from "@angular/forms";
+import {strings} from '../../utils/strings';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +9,8 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent {
+  strings = strings;
+
   loginForm: FormGroup = new FormGroup({
     email: new FormControl("")
   });

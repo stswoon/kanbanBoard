@@ -9,11 +9,12 @@
     <div *ngIf="isLoading()" class="header__control">{{strings.header.loader}}
       <p-progressSpinner></p-progressSpinner>
     </div>
-    <i class="pi pi-question header__control">{{strings.header.goToGitHub}}</i>
-    <span class="header__control">{{strings.header.loggedAs + getUserEmail()}}</span>
-    <a href="#" class="header__control" icon="logout" (click)="logout()">
-      <i class="pi pi-sign-out">{{strings.header.logout}}</i>
-    </a>
+    <a href="https://github.com/stswoon/kanbanBoard">{{strings.header.goToGitHub}}</a>
+    <span class="header__control">
+      {{strings.header.loggedAs + getUserEmail()}}
+      <a href="#" (click)="logout($event)">{{strings.header.logout}}<i class="pi pi-sign-out"></i></a>
+    </span>
+
   </div>
 
 </div>

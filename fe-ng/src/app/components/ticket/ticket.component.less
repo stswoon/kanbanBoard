@@ -2,9 +2,9 @@
 @backgroundHeaderColor: rgb(184, 164, 54);
 
 .ticket {
-  padding: 0 5px 5px 5px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  //padding: 0 5px 5px 5px;
+  padding-top: 5px;
+  padding-bottom: 10px;
   border: 5px solid rgb(222, 192, 64);
   border-top: 5px solid rgb(184, 164, 54);
   background-color: @backgroundColor;
@@ -13,8 +13,8 @@
   &:hover {
     border-color: #c15911;
     transition: border-color 0.3s linear, margin 0.1s linear;
-    margin-top: 0px;
-    margin-bottom: 15px;
+    padding-top: 0px;
+    padding-bottom: 15px;
   }
 
   &__header {
@@ -43,6 +43,12 @@
     }
   }
 
+  &__description {
+    textarea {
+      width: 100%;
+    }
+  }
+
   &__dueDate {
     display: flex;
     align-items: center;
@@ -60,6 +66,7 @@
 
     &.ant-calendar-picker {
       width: 100%;
+
       & .ant-calendar-picker-input, & .ant-calendar-picker-clear {
         background-color: @backgroundColor;
         border-color: @backgroundColor;

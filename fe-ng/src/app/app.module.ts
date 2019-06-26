@@ -7,7 +7,14 @@ import {LoginComponent} from './components/login/login.component';
 import {BoardComponent} from './components/board/board.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ButtonModule} from "primeng/button";
-import {InputTextModule, MessageModule, MessageService, ProgressSpinnerModule} from "primeng/primeng";
+import {
+  ConfirmationService,
+  ConfirmDialogModule,
+  InputTextModule,
+  MessageModule,
+  MessageService,
+  ProgressSpinnerModule
+} from "primeng/primeng";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginService} from "./components/login/login.service";
 import {BoardService} from "./components/board/board.service";
@@ -20,7 +27,7 @@ import {HttpService} from "./services/http/http.service";
 import {HeaderService} from "./components/header/header.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ToastModule} from "primeng/toast";
-import { TicketComponent } from './components/ticket/ticket.component';
+import {TicketComponent} from './components/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +51,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
     MatCardModule,
     DragDropModule,
     HttpClientModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   providers: [
     CanActivateBoardPageService,
@@ -52,7 +60,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
     HeaderService,
     LoginService,
     BoardService,
-    MessageService
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

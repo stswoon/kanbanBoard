@@ -3,7 +3,7 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {HttpOptions} from "./http-options.model";
 import {catchError, map} from "rxjs/operators";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../../../environments/environment";
 import {MessageService} from "primeng/api";
 import {strings} from "../../utils/strings";
 

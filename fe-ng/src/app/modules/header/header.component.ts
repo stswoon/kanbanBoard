@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {strings} from "../../utils/strings"
+import {strings} from "../shared/utils/strings"
 import {HeaderService} from "./header.service";
 
 @Component({

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LoginService} from "../login/login.service";
+import {LoginService} from "../shared/services/login/login.service";
 
 @Injectable()
 export class HeaderService {

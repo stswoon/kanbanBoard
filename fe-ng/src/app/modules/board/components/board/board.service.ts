@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {Ticket} from "./board.models";
-import {HttpService} from "../../services/http/http.service";
-import {LoginService} from "../login/login.service";
+import {HttpService} from "../../../shared/services/http/http.service";
+import {LoginService} from "../../../shared/services/login/login.service";
 import {map} from "rxjs/operators";
 
 @Injectable()

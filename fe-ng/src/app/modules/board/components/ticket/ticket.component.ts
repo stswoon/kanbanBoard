@@ -1,10 +1,11 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {IsoDate, Ticket, TicketStatus, UUID} from "../board/board.models";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {debounce} from 'lodash.debounce';
-import {strings} from "../../utils/strings";
+import {IsoDate, Ticket, UUID} from "../board/board.models";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import * as lodash from "lodash";
+import {strings} from "../../../shared/utils/strings";
 import {ConfirmationService} from "primeng/api";
-import {utils} from "../../utils/utils";
+import {utils} from "../../../shared/utils/utils";
+import * as moment from 'moment'
 
 //https://alligator.io/angular/reactive-forms-valuechanges/
 @Component({
@@ -37,7 +38,7 @@ export class TicketComponent implements OnChanges {
         this.change.emit(utils.object.deepCopy(value));
       };
       f = f.bind(this);
-      this.debounceHandleChange = debounce(f, 500);
+      this.debounceHandleChange = lodash.debounce(f, 500);
     }
     this.debounceHandleChange();
   }
@@ -47,8 +48,11 @@ export class TicketComponent implements OnChanges {
     const ticket: Ticket = changes.ticket.currentValue;
     ticket.name = ticket.name || strings.ticket.noname;
     ticket.description = ticket.description || "";
-    this.ticketForm = this.formBuilder.group({...ticket});
+    // ticket.dueDate = moment(ticket.dueDate) || null;
+    const dueDate: Date = ticket.dueDate == null ? null : moment(ticket.dueDate).toDate();
+    this.ticketForm = this.formBuilder.group({...ticket, dueDate});
     this.ticketForm.valueChanges.subscribe((value: Ticket) => {
+      value.dueDate = value.dueDate == null ? null : moment(value.dueDate).toISOString();
       console.debug("Change ticket: ", value);
       this.handleChange(value);
     });

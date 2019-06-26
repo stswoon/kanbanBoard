@@ -2,7 +2,7 @@
 
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {columnTypes, Ticket, TicketStatus} from "./board.models";
-import {strings} from "../../utils/strings";
+import {strings} from "../../../shared/utils/strings";
 import {BoardService} from "./board.service";
 import {Observable, Subscription} from "rxjs";
 import {filter, map} from "rxjs/operators";

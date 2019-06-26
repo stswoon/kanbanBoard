@@ -1,5 +1,5 @@
 <div class="ticket">
-<!--  <div class="ticket__header" cdkDragHandle></div>-->
+  <!--  <div class="ticket__header" cdkDragHandle></div> moved to board as WA -->
 
   <form [formGroup]="ticketForm">
     <div class="ticket__name">
@@ -9,16 +9,12 @@
                        icon="pi pi-exclamation-triangle"></p-confirmDialog>
       <p-button icon="pi pi-trash" type="text" (click)="confirmDelete()"></p-button>
     </div>
-    <!--
     <div class="ticket__dueDate">
-      <span class="ticket__input-name">{strings.ticket.dueDate}</span>
-      <DatePicker class="ticket__input"
-                  defaultValue={this.props.dueDate && moment(this.props.dueDate)}
-                  onChange={this.handleDateChange} placeholder=""/>
+      <span class="ticket__input-name">{{strings.ticket.dueDate}}</span>
+      <p-calendar class="test" formControlName="dueDate"></p-calendar>
     </div>
-    -->
     <div class="ticket__description">
-      <textarea class="ticket__input" [rows]="4" pInputTextarea autoResize="autoResize" formControlName="description">
+      <textarea pInputTextarea class="ticket__input" [rows]="4" formControlName="description">
       </textarea>
     </div>
   </form>

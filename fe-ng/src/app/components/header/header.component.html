@@ -1,0 +1,19 @@
+<div class="header">
+
+  <div class="header__title">
+    <h3 class="header__title_name">{{strings.header.title}}</h3>
+    <span class="header__title_version">{{strings.header.version}}</span>
+  </div>
+
+  <div class="header__controls">
+    <div *ngIf="isLoading()" class="header__control">{{strings.header.loader}}
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+    <i class="pi pi-question header__control">{{strings.header.goToGitHub}}</i>
+    <span class="header__control">{{strings.header.loggedAs + getUserEmail()}}</span>
+    <a href="#" class="header__control" icon="logout" (click)="logout()">
+      <i class="pi pi-sign-out">{{strings.header.logout}}</i>
+    </a>
+  </div>
+
+</div>

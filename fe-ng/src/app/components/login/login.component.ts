@@ -13,13 +13,12 @@ export class LoginComponent {
     email: new FormControl("")
   });
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService) {
   }
 
   login($event: MouseEvent) {
     if (this.isLoginFormValid()) {
       this.loginService.login(this.loginForm.controls.email.value.trim());
-      this.router.navigate(['/'])
     }
   }
 

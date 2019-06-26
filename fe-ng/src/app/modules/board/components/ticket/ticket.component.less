@@ -1,0 +1,80 @@
+@backgroundColor: rgba(222, 192, 64, 1);
+@backgroundHeaderColor: rgb(184, 164, 54);
+
+.ticket {
+  //padding: 0 5px 5px 5px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border: 5px solid rgb(222, 192, 64);
+  border-top: 5px solid rgb(184, 164, 54);
+  background-color: @backgroundColor;
+  min-width: 220px;
+
+  &:hover {
+    border-color: #c15911;
+    transition: border-color 0.3s linear, margin 0.1s linear;
+    padding-top: 0px;
+    padding-bottom: 15px;
+  }
+
+  &__header {
+    height: 30px;
+    cursor: move;
+    background-color: @backgroundHeaderColor;
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__name {
+    display: flex;
+
+    .ticket__input {
+      font-weight: 700;
+    }
+
+    & .ui-button { //todo
+      background-color: @backgroundColor;
+      border-color: @backgroundColor;
+    }
+
+    & .ui-button:hover { //todo
+      color: #fff;
+      background-color: #ff4d4f;
+      border-color: #ff4d4f;
+    }
+  }
+
+  &__description {
+    textarea {
+      width: 100%;
+    }
+  }
+
+  &__dueDate {
+    display: flex;
+    align-items: center;
+
+    & .ui-inputtext { //todo
+      width: 100px;
+    }
+  }
+
+  &__input-name {
+    white-space: nowrap;
+    background-color: @backgroundColor;
+    padding-left: 10px;
+  }
+
+  &__input {
+    background-color: @backgroundColor;
+    border-color: @backgroundColor;
+
+    &.ant-calendar-picker {
+      width: 100%;
+
+      & .ant-calendar-picker-input, & .ant-calendar-picker-clear {
+        background-color: @backgroundColor;
+        border-color: @backgroundColor;
+      }
+    }
+  }
+}

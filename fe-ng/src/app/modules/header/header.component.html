@@ -1,0 +1,20 @@
+<div class="header">
+
+  <div class="header__title">
+    <h3 class="header__title_name">{{strings.header.title}}</h3>
+    <span class="header__title_version">{{strings.header.version}}</span>
+  </div>
+
+  <div class="header__controls">
+    <div *ngIf="isLoading()" class="header__control">{{strings.header.loader}}
+      <p-progressSpinner [style]="{width: '30px', height: '30px'}" strokeWidth="8"></p-progressSpinner>
+    </div>
+    <a href="https://github.com/stswoon/kanbanBoard">{{strings.header.goToGitHub}}</a>
+    <span class="header__control">
+      {{strings.header.loggedAs + getUserEmail()}}
+      <a href="#" (click)="logout($event)">{{strings.header.logout}}<i class="pi pi-sign-out"></i></a>
+    </span>
+
+  </div>
+
+</div>

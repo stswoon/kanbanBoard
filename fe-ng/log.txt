@@ -1,0 +1,23 @@
+
+> fe@0.0.0 start C:\_work\kanbanBoard\fe-ng
+> ng serve
+
+** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+Date: 2019-06-25T11:45:56.674Z
+Hash: cbeaa386f0d404614446
+Time: 10451ms
+chunk {es2015-polyfills} es2015-polyfills.js, es2015-polyfills.js.map (es2015-polyfills) 285 kB [initial] [rendered]
+chunk {main} main.js, main.js.map (main) 177 kB [initial] [rendered]
+chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+chunk {runtime} runtime.js, runtime.js.map (runtime) 6.08 kB [entry] [rendered]
+chunk {styles} styles.js, styles.js.map (styles) 387 kB [initial] [rendered]
+chunk {vendor} vendor.js, vendor.js.map (vendor) 7.06 MB [initial] [rendered]
+[34mi[39m [90m｢wdm｣[39m: Failed to compile.
+[34mi[39m [90m｢wdm｣[39m: Compiling...
+
+Date: 2019-06-25T11:46:44.162Z - Hash: 39acfeda5655319a4b67 - Time: 1775ms
+5 unchanged chunks
+chunk {styles} styles.js, styles.js.map (styles) 16.8 kB [initial] [rendered]
+[34mi[39m [90m｢wdm｣[39m: Compiled with warnings.
+Terminate batch job (Y/N)? 

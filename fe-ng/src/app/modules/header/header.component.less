@@ -1,0 +1,37 @@
+.header {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background: linear-gradient(to top, #777a77, #cfd3ce);
+  min-width: 650px;
+
+  &__module-select {
+    min-width: 160px;
+  }
+
+  &__title {
+    display: inline-block;
+    padding-right: 20px;
+
+    &_name {
+      display: inline-block;
+      padding-right: 5px;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    float: right;
+    align-items: center;
+    line-height: 60px;
+
+    & .header__control {
+      margin: 0 20px;
+      display: flex;
+
+      a {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}

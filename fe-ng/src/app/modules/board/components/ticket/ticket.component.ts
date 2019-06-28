@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewEncapsulation} from '@angular/core';
 import {Ticket, UUID} from "../board/board.models";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import * as lodash from "lodash";
@@ -11,7 +11,8 @@ import * as moment from 'moment'
 @Component({
   selector: 'app-ticket',
   templateUrl: './ticket.component.html',
-  styleUrls: ['./ticket.component.less']
+  styleUrls: ['./ticket.component.less'],
+  // encapsulation: ViewEncapsulation.None
 })
 export class TicketComponent implements OnChanges {
   strings = strings;

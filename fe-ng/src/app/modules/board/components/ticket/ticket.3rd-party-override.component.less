@@ -1,0 +1,24 @@
+@backgroundColor: rgba(222, 192, 64, 1);
+
+.ticket {
+
+  &__name {
+
+    & .ui-button {
+      background-color: @backgroundColor;
+      border-color: @backgroundColor;
+    }
+
+    & .ui-button:enabled:hover {
+      color: #fff;
+      background-color: #ff4d4f;
+      border-color: #ff4d4f;
+    }
+  }
+
+  &__dueDate {
+    & .ui-inputtext {
+      background-color: @backgroundColor;
+    }
+  }
+}

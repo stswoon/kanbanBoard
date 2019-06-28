@@ -1,7 +1,7 @@
 .board {
   display: flex;
   justify-content: space-around;
-  min-width: 720px;
+  min-width: 840px;
 
   .ticket_placeholder {
     padding: 0 5px 5px 5px;
@@ -16,3 +16,23 @@
   }
 }
 
+.board-column {
+  width: 32%;
+  min-width: 260px;
+  margin: 0 1%;
+
+  &__title {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  &__tickets {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 100px); //in case of no tickets
+  }
+
+  &__add-ticket {
+    margin-left: 5px;
+  }
+}

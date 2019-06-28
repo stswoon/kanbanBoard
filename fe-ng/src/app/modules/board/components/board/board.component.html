@@ -1,7 +1,7 @@
 <div class="board" cdkDropList cdkDropListOrientation="horizontal"
      [cdkDropListData]="columnTypes" (cdkDropListDropped)="onTrackDrop($event)">
 
-  <div class="card-list mat-elevation-z1" *ngFor="let columnType of columnTypes">
+  <div class="card-list mat-elevation-z1 board-column" *ngFor="let columnType of columnTypes">
     <h2 cdkDragHandle class="mat-h2">
       {{getColumnName(columnType)}}
       <p-button *ngIf="columnType === 'BACKLOG'" icon="pi pi-plus" type="text" (click)="addTicket()"></p-button>
